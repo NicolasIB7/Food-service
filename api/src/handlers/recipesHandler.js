@@ -11,7 +11,8 @@
 
      const result = name ? await searchRecipeByName(name) : await getAllRecipes();
 
-         res.status(200).json(result)}  
+         return res.status(200).json(result)
+        }  
 
  const getRecipeHandler=async (req,res)=>{
      const {id}=req.params;
