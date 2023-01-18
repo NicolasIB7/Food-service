@@ -45,6 +45,7 @@
              steps:(el.analyzedInstructions[0]?.steps?.map(item=>item.step)),
              image:el.image,
              dishTypes:el.dishTypes?.map(dish=>dish),
+             diets:el.diets,
         }
       })
       
@@ -69,6 +70,7 @@
                  steps:(el.analyzedInstructions[0]?.steps?.map(item=>item.step)),
                  dishTypes:el.dishTypes?.map(dish=>dish),
                  image:el.image,
+                 diets:el.diets,
             }
           })
 
@@ -112,6 +114,7 @@
              steps:(el.analyzedInstructions[0]?.steps?.map(item=>item.step)),
              dishTypes:el.dishTypes?.map(dish=>dish),
              image:el.image,
+             diets:el.diets,
         }
       })
 
