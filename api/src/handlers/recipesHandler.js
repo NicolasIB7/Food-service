@@ -5,6 +5,8 @@
      createRecipe,
 
 }=require("../controllers/recipesController");
+const { Recipe, Diet } = require("../db.js");
+const {Op}=require("sequelize");
 
  const getRecipesHandler=async (req,res)=>{
      const {name}=req.query;
@@ -26,11 +28,20 @@
  };
 
  const createRecipesHandler=async (req,res)=>{
-     const {name,summary,healthScore}=req.body;
+     
 
 try {
-    const newRecipe= await createRecipe(name,summary,healthScore);
-    res.status(201).json("Creado exitosamente");
+    const {name,summary,healthScore,steps,diets}=req.body;
+    const newRecipe= await createRecipe(name,summary,healthScore,steps);
+
+    const findAllDiets= await Diet.findAll({
+        where:{name:{
+            [Op.in]:diets? diets:[]}}
+       });
+    
+       await newRecipe.addDiet(findAllDiets);
+
+    return res.status(200).json(newRecipe)
 } catch (error) {
     res.status(400).json({error:error.message})
 }}

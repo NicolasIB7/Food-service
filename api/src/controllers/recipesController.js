@@ -17,8 +17,13 @@
 //      })
 //  }
 
- const createRecipe=async (name,summary,healthScore)=>{
-    return await Recipe.create({name,summary,healthScore});
+ const createRecipe=async (name,summary,healthScore,steps)=>{
+   const newRecipe= await Recipe.create({name,summary,healthScore,steps});
+
+  
+
+   return newRecipe;
+
  };
 
 
@@ -37,7 +42,9 @@
              name:el.title,
              summary:el.summary,
              healthScore:el.healthScore,
-             steps:(el.analyzedInstructions[0]?.steps?.map(item=>item.step))
+             steps:(el.analyzedInstructions[0]?.steps?.map(item=>item.step)),
+             image:el.image,
+             dishTypes:el.dishTypes?.map(dish=>dish),
         }
       })
       
@@ -108,7 +115,7 @@
         }
       })
 
-      const filteredApi=API.filter(recipe=>recipe.name.includes(name))
+      const filteredApi=API.filter(recipe=>recipe.name.toLowerCase().includes(name.toLowerCase()))
 
 
 
