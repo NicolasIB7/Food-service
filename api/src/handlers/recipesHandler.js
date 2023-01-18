@@ -19,9 +19,9 @@
      const fuente=isNaN(id)?"bdd" : "api";  //me fijo si el id es numerico para saber si pertenece a la API(numerico) o a la base de datos, es decir letras y numeros
     try {
         const recipe=await getRecipeById(id,fuente);
-        res.status(200).json(recipe);
+       res.status(200).send(recipe);
     } catch (error) {
-        res.status(400).json({error:error.message})
+        res.status(400).send({error:error.message})
     }
  };
 

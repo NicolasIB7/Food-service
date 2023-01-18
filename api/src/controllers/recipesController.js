@@ -1,7 +1,9 @@
  const axios =require("axios");
 // const recipesRouter = require("../routes/recipesRouter");
- const {API_KEY} =process.env;
+ //const {API_KEY} =process.env;
  const { Recipe, Diet } = require("../db.js");
+ const {Op}=require("sequelize")
+ const API_KEY="160bdeb439294829b87405f71564c879"
 
 
 //  const cleanArray= (arr)=>{
@@ -19,14 +21,7 @@
     return await Recipe.create({name,summary,healthScore});
  };
 
-const getRecipeById=async (id,fuente)=>{
 
-    const recipe=
-    fuente==="api"
-?(await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`)).data
-: await Recipe.findByPk(id)
- return recipe;
-}
 
   const getAllRecipes=async()=>{
 
@@ -53,9 +48,47 @@ const getRecipeById=async (id,fuente)=>{
   }
 
 
- const searchRecipeByName= async (name) =>{
-    // const databaseRecipes= await Recipe.findAll({where:{title:name}});
+  const getRecipeById=async (id,fuente)=>{
+
+    if(fuente==="api"){
+           const API=(await axios.get("https://apimocha.com/n.s.recipes/allrecipes"))
+           const filterAPI=API.data.results.map(el=>{
+            return {
     
+                id:el.id.toString(),
+                 name:el.title,
+                 summary:el.summary,
+                 healthScore:el.healthScore,
+                 steps:(el.analyzedInstructions[0]?.steps?.map(item=>item.step)),
+                 dishTypes:el.dishTypes?.map(dish=>dish),
+                 image:el.image,
+            }
+          })
+
+          const filtradoId=filterAPI.find(recipe=>recipe.id===id);
+
+          
+          return filtradoId;
+    }
+ else{
+
+ const bdd= await Recipe.findByPk(id, {
+    include:{
+        model:Diet,
+        attributes:["name"],
+        through:{attributes:[]}
+    }
+ })
+  return bdd;
+ }
+}
+
+ const searchRecipeByName= async (name) =>{
+    const databaseRecipes= await Recipe.findAll({
+        where:{name:
+            {[Op.substring]:name.toLowerCase()
+            }}});
+
      const apiRecipeRaw=(
          await axios.get("https://apimocha.com/n.s.recipes/allrecipes")
      );
@@ -69,7 +102,9 @@ const getRecipeById=async (id,fuente)=>{
              name:el.title,
              summary:el.summary,
              healthScore:el.healthScore,
-             steps:(el.analyzedInstructions[0]?.steps?.map(item=>item.step))
+             steps:(el.analyzedInstructions[0]?.steps?.map(item=>item.step)),
+             dishTypes:el.dishTypes?.map(dish=>dish),
+             image:el.image,
         }
       })
 
@@ -77,7 +112,7 @@ const getRecipeById=async (id,fuente)=>{
 
 
 
-     return filteredApi
+     return [...filteredApi,...databaseRecipes]
  }
 
  module.exports={getAllRecipes,searchRecipeByName,getRecipeById,createRecipe}
