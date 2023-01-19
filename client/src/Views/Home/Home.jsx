@@ -1,3 +1,5 @@
+import CardsContainer from "../../components/CardContainer/CardsContainer";
+
 const Home= ()=>{
     return(
     <>
@@ -5,6 +7,8 @@ const Home= ()=>{
             Esta es la vista de HOME
 
         </h1>
+
+        <CardsContainer/>
     
     
     </>
