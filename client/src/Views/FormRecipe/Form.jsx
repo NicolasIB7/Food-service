@@ -33,8 +33,15 @@ const Form= ()=>{
         setForm({...form,[property]:value})
         
     }
+
+    const submitHandler=(event)=>{
+         event.preventDefault();
+         const response=axios.post("PEGAR URL CON LA QUE YO HAGO POST EN INSOMNIA",form)
+         .then(res=>alert(res))
+         .catch(err=>alert(err))
+    }
     return(
-        <form>
+        <form onSubmit={submitHandler}>
             <div>
                 <label>Nombre:</label>
                 <input type="text" value={form.name} onChange={changeHandler} name="name"></input>
@@ -60,6 +67,8 @@ const Form= ()=>{
                 <label>Submit</label>
                 <input></input>
             </div>
+
+            <button type="submit">SUBMIT</button>
 
 
 
