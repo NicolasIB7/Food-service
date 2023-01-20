@@ -1,6 +1,11 @@
 import { useState } from "react";
+import axios from "axios";
+import { postRecipe } from "../../redux/actions";
+import { useDispatch } from "react-redux";
 
 const Form= ()=>{
+
+    const dispatch=useDispatch();
 
     const [form,setForm]=useState({
         name:"",
@@ -11,7 +16,7 @@ const Form= ()=>{
 
     const [errors, setErrors]=useState({
         name:"",
-        resumen:"",
+        summary:"",
         healthScore:"",
         steps:"",
     })
@@ -34,15 +39,15 @@ const Form= ()=>{
         
     }
 
-    // const submitHandler=(event)=>{
-    //      event.preventDefault();
-    //      const response=axios.post("PEGAR URL CON LA QUE YO HAGO POST EN INSOMNIA",form)
-    //      .then(res=>alert(res))
-    //      .catch(err=>alert(err))
-    // }
-    //onSubmit={submitHandler}
+    const submitHandler=(event)=>{
+         event.preventDefault();
+         dispatch(postRecipe(form))
+         .then(res=>alert(res))
+         .catch(err=>alert(err))
+    }
+    
     return(
-        <form> 
+        <form onSubmit={submitHandler}> 
             <div>
                 <label>Nombre:</label>
                 <input type="text" value={form.name} onChange={changeHandler} name="name"></input>
@@ -56,17 +61,12 @@ const Form= ()=>{
 
             <div>
                 <label>Nivel de comida saludable:</label>
-                <input value={form.healthScore} onChange={changeHandler} name="healthScore"></input>
+                <input type="number" value={form.healthScore} onChange={changeHandler} name="healthScore"></input>
             </div>
 
             <div>
                 <label>Paso a paso:</label>
-                <input value={form.steps} onChange={changeHandler} name="steps"></input>
-            </div>
-
-            <div>
-                <label>Submit</label>
-                <input></input>
+                <input type="text" value={form.steps} onChange={changeHandler} name="steps"></input>
             </div>
 
             <button type="submit">SUBMIT</button>

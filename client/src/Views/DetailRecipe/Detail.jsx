@@ -1,33 +1,47 @@
 import React, { useState,useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {useParams} from "react-router-dom";
+import { getRecipeById } from "../../redux/actions";
 
 
 export const Detail= (props)=>{
+    const details=useSelector((state)=>state.detail);
 
-    // const [recipe,setRecipe]=useState({})
-    // useEffect(()=>{
-    //     axios.get("URL CON id")
+    const {id}= useParams();
+    const dispatch=useDispatch();
 
-
-    //     "VER COMO SE HACE"
-
-
-    //     return setRecipe({})
-    // },[])
-   
+    useEffect(()=>{
+        dispatch(getRecipeById(id))
+    },[dispatch,id]);
+    
 
     return(
+        
     <div>
-        {/* <img src={recipe.image}/>
-        <h1>{recipe.name}</h1>
-        <h1>{recipe.dishTypes}</h1>
-        <h1>{recipe.diets}</h1>
-        <h1>{recipe.summary}</h1>
-        <h1>{recipe.healthScore}</h1>
-        <h1>{recipe.steps}</h1> */}
-        <h1>detalles</h1>
+        <h2>holaaa</h2>
+            <div>
+                <h1>{details.name}</h1>
+            </div>
+            <div>
+                <h2>{details.steps}</h2>
+            </div>
+            <div>
+                <h3>{details.dishTypes}</h3>
+            </div>
+            <div>
+                <h1>{details.diets}</h1>
+            </div>
+            <div>
+                <h1>{details.healthScore}</h1>
+            </div>
+            <image src={details.image}></image>
+        
+ 
     </div>
     )
 }
 
 export default Detail;
+
+
+//DESMONTAR EL COMPONENTE 

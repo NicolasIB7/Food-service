@@ -15,11 +15,11 @@ function App() {
       <Route path="/create">
         <Form/>
       </Route>
-      <Route path="/detail">
+      <Route exact path="/home/:id">
         <Detail/>
       </Route>
 
-      <Route path="/home">
+      <Route exact path="/home">
         <Home/>
       </Route>
 
