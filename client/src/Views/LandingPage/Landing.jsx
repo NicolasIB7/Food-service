@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Landing= ()=>{
     return(
     <>
@@ -5,6 +7,11 @@ const Landing= ()=>{
             Esta es la vista de LANDING
 
         </h1>
+
+
+        <div>
+            <Link to="/home">Pagina inicial</Link>
+        </div>
     
     
     </>

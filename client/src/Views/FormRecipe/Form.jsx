@@ -17,35 +17,36 @@ const Form= ()=>{
     })
 
 
-    const validate=(form)=>{
-        if("EXPRESION REGULAR".test(form.name)){
-            setErrors({...errors,name:""})
-        }else{
-            setErrors({...errors,name:"Hay un error en el nombre"})//TENER EN CUENTA CUANDO YO DEJO EN BLANCO QUE DESAPAREZCA EL MENSAJE DE ERROR
-        }
-    }
+    // const validate=(form)=>{
+    //     if("EXPRESION REGULAR".test(form.name)){
+    //         setErrors({...errors,name:""})
+    //     }else{
+    //         setErrors({...errors,name:"Hay un error en el nombre"})//TENER EN CUENTA CUANDO YO DEJO EN BLANCO QUE DESAPAREZCA EL MENSAJE DE ERROR
+    //     }
+    // }
 
     const changeHandler=(event)=>{
         const property=event.target.name;
         const value=event.target.value;
 
-        validate({...form,[property]:value}); //le doy lo mismo que set form para que no haya delay al momento de validar mi input
+       // validate({...form,[property]:value}); //le doy lo mismo que set form para que no haya delay al momento de validar mi input
         setForm({...form,[property]:value})
         
     }
 
-    const submitHandler=(event)=>{
-         event.preventDefault();
-         const response=axios.post("PEGAR URL CON LA QUE YO HAGO POST EN INSOMNIA",form)
-         .then(res=>alert(res))
-         .catch(err=>alert(err))
-    }
+    // const submitHandler=(event)=>{
+    //      event.preventDefault();
+    //      const response=axios.post("PEGAR URL CON LA QUE YO HAGO POST EN INSOMNIA",form)
+    //      .then(res=>alert(res))
+    //      .catch(err=>alert(err))
+    // }
+    //onSubmit={submitHandler}
     return(
-        <form onSubmit={submitHandler}>
+        <form> 
             <div>
                 <label>Nombre:</label>
                 <input type="text" value={form.name} onChange={changeHandler} name="name"></input>
-                {errors.name && <span>{errors.name}</span>}
+                {/* {errors.name && <span>{errors.name}</span>} */}
             </div>
 
             <div>

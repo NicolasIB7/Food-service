@@ -2,6 +2,7 @@ import { Route, useLocation } from 'react-router-dom';
 import './App.css';
 import NavBar from './components/NavBar/NavBar';
 import {Detail,Form,Home,Landing} from "./Views"
+import { About } from './Views/About/About';
 
 function App() {
 
@@ -24,6 +25,10 @@ function App() {
 
       <Route exact path="/">
         <Landing/>
+      </Route>
+
+      <Route exact path="/about">
+        <About/>
       </Route>
       
     </div>
