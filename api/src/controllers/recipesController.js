@@ -107,14 +107,14 @@
      const API=apiRecipeRaw.data.results.map(el=>{
         return {
 
-            id:el.id,
-             name:el.title,
-             summary:el.summary,
-             healthScore:el.healthScore,
-             steps:(el.analyzedInstructions[0]?.steps?.map(item=>item.step)),
-             dishTypes:el.dishTypes?.map(dish=>dish),
-             image:el.image,
-             diets:el.diets,
+          id:el.id,
+          name:el.title,
+          summary:el.summary,
+          healthScore:el.healthScore,
+          steps:(el.analyzedInstructions[0]?.steps?.map(item=>item.step)),
+          image:el.image,
+          dishTypes:el.dishTypes?.map(dish=>dish),
+          diets:el.diets,
         }
       })
 

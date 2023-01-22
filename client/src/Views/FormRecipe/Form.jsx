@@ -9,7 +9,7 @@ const Form= ()=>{
 
     const [form,setForm]=useState({
         name:"",
-        resumen:"",
+        summary:"",
         healthScore:"",
         steps:"",
     })
@@ -42,8 +42,8 @@ const Form= ()=>{
     const submitHandler=(event)=>{
          event.preventDefault();
          dispatch(postRecipe(form))
-         .then(res=>alert(res))
-         .catch(err=>alert(err))
+         .then(res=>alert("recera creada correctamente"))
+         .catch(err=>alert("No se pudo crear la receta, error"))
     }
     
     return(
@@ -56,7 +56,7 @@ const Form= ()=>{
 
             <div>
                 <label>Resumen del plato:</label>
-                <input type="text" value={form.resumen} onChange={changeHandler} name="resumen"></input>
+                <input type="text" value={form.summary} onChange={changeHandler} name="summary"></input>
             </div>
 
             <div>

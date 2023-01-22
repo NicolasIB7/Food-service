@@ -23,10 +23,10 @@ export const Detail= (props)=>{
                 <h1>{details.name}</h1>
             </div>
             <div>
-                <h2>{details.steps}</h2>
+                <p>{details.steps}</p>
             </div>
             <div>
-                <h3>{details.dishTypes}</h3>
+                <h1>{details.dishTypes}</h1>
             </div>
             <div>
                 <h1>{details.diets}</h1>
@@ -34,7 +34,12 @@ export const Detail= (props)=>{
             <div>
                 <h1>{details.healthScore}</h1>
             </div>
-            <image src={details.image}></image>
+            <div>
+            <img src={details.image}/>
+            </div>
+            <div>
+            <p> {details.summary}</p>
+            </div>
         
  
     </div>
