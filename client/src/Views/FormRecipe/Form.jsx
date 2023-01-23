@@ -1,17 +1,21 @@
 import { useState } from "react";
 import axios from "axios";
-import { postRecipe } from "../../redux/actions";
-import { useDispatch } from "react-redux";
+import { postRecipe,getDiets } from "../../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
 const Form= ()=>{
 
     const dispatch=useDispatch();
+
+    const diet=useSelector(state=>state.diets)
 
     const [form,setForm]=useState({
         name:"",
         summary:"",
         healthScore:"",
         steps:"",
+        diets:[],
     })
 
     const [errors, setErrors]=useState({
@@ -39,12 +43,27 @@ const Form= ()=>{
         
     }
 
+    const handleSelect=(e)=>{
+        if(form.diets.includes(e.target.value)){
+            return "Diet type already exists"
+        }else{
+            setForm({
+                ...form,
+                diets:[...form.diets,e.target.value]
+            })
+        }
+    }
+
     const submitHandler=(event)=>{
          event.preventDefault();
          dispatch(postRecipe(form))
          .then(res=>alert("recera creada correctamente"))
          .catch(err=>alert("No se pudo crear la receta, error"))
     }
+
+    useEffect(()=>{
+        dispatch(getDiets())
+    },[dispatch])
     
     return(
         <form onSubmit={submitHandler}> 
@@ -67,6 +86,18 @@ const Form= ()=>{
             <div>
                 <label>Paso a paso:</label>
                 <input type="text" value={form.steps} onChange={changeHandler} name="steps"></input>
+            </div>
+
+            <div>
+                <select onChange={handleSelect}>
+                    <option value={form.diets} name="diets">Diet</option>
+                    {diet?.map(c=>{
+                        return(
+                            <option value={c.name}>{c.name}</option>
+                        )
+                    })}
+                </select>
+
             </div>
 
             <button type="submit">SUBMIT</button>

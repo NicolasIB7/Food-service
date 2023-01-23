@@ -1,37 +1,36 @@
-const {dietas}=require("../controllers/dietController")
-const { Diet } = require("../db.js");
+//const {dietas}=require("../controllers/dietController")
+const { Diet,Recipe } = require("../db.js");
+const axios =require("axios")
 
 
 const dietsHandler=async (req,res)=>{
     try {
-        dietas.forEach((e)=>{
-            Diet.findOrCreate({
-                where:{name:e.name},
+        const APIdietas=await axios.get("https://apimocha.com/n.s.recipes/allrecipes")
+        const types=await APIdietas.data.results.map((t)=>t.diets);
+        const diets=types.flat(1);
+        const typesDiets=[...new Set(diets),"vegetarian"];
+         typesDiets.forEach(async(d)=>{
+            await Diet.findOrCreate({
+                where:{name:d},
             })
-        });
+         })
+         const allDiets=await Diet.findAll();
 
-        const allTheTypes=await Diet.findAll();
-        res.status(200).send(allTheTypes.map((e)=>e.name))
+        return allDiets;
     } catch (error) {
-        res.status(400).json({error:error.message})
+        console.log(error)
+    }}
+
+    const dietas=async (req,res)=>{
+        try {
+            const d=await Diet.findAll();
+            res.status(200).json(d);
+        } catch (e) {
+            res.status(404).json({msg:"error"})
+        }
     }
 
 
-}
 
+module.exports={dietsHandler,dietas}
 
-module.exports={dietsHandler}
-
-
-
-
-
-
-
-
-
-
-
-
-
-module.exports={dietsHandler}

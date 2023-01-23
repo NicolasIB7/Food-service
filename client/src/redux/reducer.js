@@ -1,9 +1,10 @@
-import { GET_BY_ID, GET_RECIPES, GET_RECIPE_BY_NAME } from "./actions";
+import { GET_BY_ID, GET_RECIPES, GET_RECIPE_BY_NAME,GET_DIETS } from "./actions";
 
 
 const initialState={
     recipes:[],
     detail:[],
+    diets:[],
 }
 
 
@@ -18,7 +19,8 @@ switch(action.type){
 
     case GET_BY_ID:
         return {...state,detail:action.payload}    
-        
+    case GET_DIETS:
+        return {...state,diets:action.payload}    
         
     default:
         return {...state};

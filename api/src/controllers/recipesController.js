@@ -17,20 +17,22 @@
 //      })
 //  }
 
- const createRecipe=async (name,summary,healthScore,steps)=>{
-   const newRecipe= await Recipe.create({name,summary,healthScore,steps});
+//  const createRecipe=async (name,summary,healthScore,steps,diets)=>{
+//    const newRecipe= await Recipe.create({name,summary,healthScore,steps,diets});
 
   
 
-   return newRecipe;
+//    return newRecipe;
 
- };
+//  };
+
 
 
 
   const getAllRecipes=async()=>{
 
-      const databaseRecipes=await Recipe.findAll();
+      
+    
 
      const allApiRecipes=(
           await axios.get("https://apimocha.com/n.s.recipes/allrecipes")
@@ -45,15 +47,39 @@
              steps:(el.analyzedInstructions[0]?.steps?.map(item=>item.step)),
              image:el.image,
              dishTypes:el.dishTypes?.map(dish=>dish),
-             diets:el.diets,
+             diets:el.diets.map(diet=>diet),
         }
       })
+
       
+      let databaseRecipes=await Recipe.findAll({
+        include:[{
+          model:Diet,
+          //as:"diets",
+          attributes:["name"],
+          
+           through:{
+               attributes:[]
+          }}]
+          
+      });
+      
+      
+      // databaseRecipes=databaseRecipes.map(recipe=>modify(recipe));
 
       //`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`
       //const apiRecipes=cleanArray(API);
      return [...API,...databaseRecipes]
   }
+
+  
+  // const modify=(r)=>{
+  //   r.Diets=r.Diets.map(diet=>diet.name)
+  //   return r;
+  // }
+
+
+
 
 
   const getRecipeById=async (id,fuente)=>{
@@ -70,7 +96,7 @@
                  steps:(el.analyzedInstructions[0]?.steps?.map(item=>item.step)),
                  dishTypes:el.dishTypes?.map(dish=>dish),
                  image:el.image,
-                 diets:el.diets,
+                 diets:el.diets.map(diet=>diet),
             }
           })
 
@@ -93,7 +119,13 @@
 }
 
  const searchRecipeByName= async (name) =>{
-    const databaseRecipes= await Recipe.findAll({
+    const databaseRecipes= await Recipe.findAll({include:{
+      model:Diet,
+      
+      attributes:["name"],
+       through:{
+           attributes:[]
+      }},
         where:{name:
             {[Op.substring]:name.toLowerCase()
             }}});
@@ -125,5 +157,5 @@
      return [...filteredApi,...databaseRecipes]
  }
 
- module.exports={getAllRecipes,searchRecipeByName,getRecipeById,createRecipe}
+ module.exports={getAllRecipes,searchRecipeByName,getRecipeById}
 

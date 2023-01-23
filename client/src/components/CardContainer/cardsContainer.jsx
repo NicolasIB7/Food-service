@@ -13,7 +13,7 @@ const CardsContainer =()=>{
                     id={recipe.id}
                     name={recipe.name}
                     image={recipe.image}
-                    diets={recipe.diets}
+                    diets={recipe.diets || recipe.Diets.map(e=>e.name)}
                 
                 />
             })}
