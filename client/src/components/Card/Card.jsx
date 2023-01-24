@@ -9,6 +9,7 @@ const Card =(props)=>{
             <p>Name:{props.name}</p>
             </Link>
             <p>Dietas:{props.diets}</p>
+            <h1>{props.healthScore}</h1>
 
         </div>
     )

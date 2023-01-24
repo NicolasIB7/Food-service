@@ -6,6 +6,8 @@ export const GET_RECIPE_BY_NAME="GET_RECIPE_BY_NAME";
 export const POST_RECIPE="POST_RECIPE";
 export const GET_BY_ID="GET_BY_ID";
 export const GET_DIETS="GET_DIETS";
+export const ORDER="ORDER";
+export const FILTER="FILTER;"
 
 export const getRecipes=()=>{
     return async function(dispatch){
@@ -56,6 +58,14 @@ export const getDiets=()=>{
         dispatch({type:GET_DIETS,payload:Dietas})
     }
 } 
+
+export const orderRecipes=(id)=>{
+    return {type:ORDER,payload:id}
+}
+
+export const filterRecipes=(status)=>{
+    return {type:FILTER,payload:status}
+}
 
 
 // export const filter=()=>{
