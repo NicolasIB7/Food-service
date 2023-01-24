@@ -70,7 +70,9 @@ const Form= ()=>{
 
     const handleSelect=(e)=>{
         if(form.diets.includes(e.target.value)){
+            console.log("YA EXISTE")
             return "Diet type already exists"
+            
         }else{
             setForm({
                 ...form,
@@ -82,8 +84,14 @@ const Form= ()=>{
     const submitHandler=(event)=>{
          event.preventDefault();
          dispatch(postRecipe(form))
-         .then(res=>alert("recera creada correctamente"))
+         .then(res=>alert("receta creada correctamente"))
          .catch(err=>alert("No se pudo crear la receta, error"))
+    }
+
+    const handleDelete=(e)=>{
+        setForm({
+            ...form,diets:form.diets.filter(d=>d!==e)
+        })
     }
 
     useEffect(()=>{
@@ -91,6 +99,8 @@ const Form= ()=>{
     },[dispatch])
     
     return(
+
+        <div>
         <form onSubmit={submitHandler}> 
             <div>
                 <label>Nombre:</label>
@@ -130,9 +140,15 @@ const Form= ()=>{
 
             <button type="submit">SUBMIT</button>
 
-
-
         </form>
+
+        {form.diets.map(el=>
+           <div>
+            <p>{el}</p>
+            <button onClick={()=>handleDelete(el)}>X</button>
+           </div> 
+           )}
+        </div>
     )
 }
 

@@ -11,7 +11,7 @@ const CardsContainer =()=>{
     const dispatch=useDispatch();
     const recipes=useSelector(state=>state.recipes) //ESTO ME TRAE EL ARRAY DE RECETAS DE MI STORE, está atento ante algun cambio que suceaa en mi store
     const diet=useSelector(state=>state.diets)
-
+    const [isLoading,setisLoading]=useState(true);
     //paginado
 
     const [currentPage,setCurrentPage]=useState(1) // creamos un estado local para la pagina actual, lo seteamos en 1 porque es nuestra primera pagina
@@ -49,6 +49,13 @@ const CardsContainer =()=>{
         e.preventDefault();
         dispatch(getRecipes())
     }
+
+
+    if(currentRecipes.length>0 && isLoading){
+        setisLoading(false)
+    }
+
+
     return(
 <div>
         <button onClick={e=>{handleClick(e)}}>Carga todos los personajes</button>
@@ -86,7 +93,9 @@ const CardsContainer =()=>{
         
 
         <div className={style.container}>
-            {currentRecipes.map(recipe=>{
+            {currentRecipes.length>0 && !isLoading ? (
+
+            currentRecipes.map(recipe=>{
                 return <Card
                     id={recipe.id}
                     name={recipe.name}
@@ -109,7 +118,11 @@ const CardsContainer =()=>{
                     // }
                 
                 />
-            })}
+            })
+            ): !currentRecipes.length>0 && isLoading ? (
+                <Loading/>
+            ):(<div>NOT FOUND</div>
+            )}
 
         </div>
     </div>
