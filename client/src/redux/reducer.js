@@ -58,9 +58,9 @@ switch(action.type){
         //     return{...state,recipes:all}
 
         case FILTER:
-            const recetas=[...state.recipes];
+            const recetas=state.copia;
             const filteredList =
-            action.payload==="all"? recetas: recetas.filter(item => item.diets?.includes(action.payload))
+            action.payload==="All"? recetas: recetas.filter(item => item.diets?.includes(action.payload))
             return {...state,recipes:filteredList}
             
             

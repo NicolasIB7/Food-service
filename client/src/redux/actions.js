@@ -63,8 +63,9 @@ export const orderRecipes=(id)=>{
     return {type:ORDER,payload:id}
 }
 
-export const filterRecipes=(status)=>{
-    return {type:FILTER,payload:status}
+export const filterRecipes=(payload)=>{
+    console.log(payload)
+    return {type:FILTER,payload}
 }
 
 
