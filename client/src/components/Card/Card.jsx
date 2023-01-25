@@ -4,12 +4,12 @@ import style from "./Card.module.css";
 const Card =(props)=>{
     return(
         <div className={style.card}>
-            <img src={props.image}/>
-            <Link to={`/home/${props.id}`}>
-            <p>Name:{props.name}</p>
+            <Link to={`/home/${props.id}`} className={style.link}>
+            <p className={style.nombres}>{props.name} </p>
             </Link>
-            <p>Dietas:{props.diets}</p>
-            <h1>{props.healthScore}</h1>
+            <img src={props.image} className={style.imagenes}/>
+            
+            <p>{props.diets}</p>
 
         </div>
     )

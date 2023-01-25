@@ -22,14 +22,6 @@ const Home= ()=>{
          
      }, [dispatch])
 
-
-
-
-
-
-
-   
-    
     // useEffect(() => {
 
     //     dispatch(getRecipes()).then(() => {   //LO USO CUANDO QUIERO QUE APAREZCA LOADING ANTES DE QUE SE RENDERICE EL COMPONENTE

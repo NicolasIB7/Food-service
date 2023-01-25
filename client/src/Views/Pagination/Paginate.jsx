@@ -1,4 +1,5 @@
 import React from "react";
+import style from "./Paginate.module.css";
 
 const Paginate=({recipesPerPage,recipes,paginado})=>{
     const pageNumber=[];
@@ -9,11 +10,11 @@ const Paginate=({recipesPerPage,recipes,paginado})=>{
 
     return(
         <nav>
-            <ul>
+            <ul className={style.ul}>
                 {pageNumber && pageNumber.map((number)=>(
-                    <li>
-                    <button onClick={()=>paginado(number)}>{number}</button> 
-                    </li>
+                    
+                    <button onClick={()=>paginado(number)} className={style.button}>{number}</button> 
+                    
                 ))}
             </ul>
 

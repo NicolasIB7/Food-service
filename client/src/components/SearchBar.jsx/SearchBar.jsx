@@ -25,8 +25,8 @@ export const SearchBar=()=>{
     return(
         <div >
             <form className={style.search}>
-                <input type="search" onChange={changeHandler} value={searchInput}></input>
-                <button type="submit" onClick={submitHandler}>Buscar</button>
+                <input type="search" onChange={changeHandler} value={searchInput} className={style.input} placeholder="Search recipe"></input>
+                <button type="submit" onClick={submitHandler} className={style.botonSearch}>Search</button>
             </form>
 
         </div>

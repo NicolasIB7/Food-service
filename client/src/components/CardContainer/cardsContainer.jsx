@@ -86,10 +86,7 @@ const CardsContainer =()=>{
         </div>
 
         
-        <Paginate
-        recipesPerPage={recipesPerPage}
-        recipes={recipes.length}
-        paginado={paginado}/>
+        
         
 
         <div className={style.container}>
@@ -101,7 +98,6 @@ const CardsContainer =()=>{
                     name={recipe.name}
                     image={recipe.image}
                      diets={recipe.diets || recipe.Diets.map(e=>e.name)}
-                    healthScore={recipe.healthScore}
                     // diets={
                     //     recipe.createdInDb ?
                     //     recipe.Diets?.map((r)=>(
@@ -125,6 +121,10 @@ const CardsContainer =()=>{
             )}
 
         </div>
+        <Paginate
+        recipesPerPage={recipesPerPage}
+        recipes={recipes.length}
+        paginado={paginado}/>
     </div>
 
        

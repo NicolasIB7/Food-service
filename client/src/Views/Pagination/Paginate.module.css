@@ -1,0 +1,21 @@
+.ul{
+
+    display: inline-block;
+}
+
+.button{
+    margin:3px 6px;
+    font-size: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid black;
+}
+
+.button:hover{
+    background-color: aquamarine;
+    transform: scale(1.2);
+}
+
+.button:active{
+    background-color: aquamarine;
+}
