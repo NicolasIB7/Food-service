@@ -97,7 +97,7 @@ const CardsContainer =()=>{
                     id={recipe.id}
                     name={recipe.name}
                     image={recipe.image}
-                     diets={recipe.diets || recipe.Diets.map(e=>e.name)}
+                     diets={recipe.diets?.map((r)=>{return(<p>{r}</p>)}) || recipe.Diets.map(e=>e.name)}
                     // diets={
                     //     recipe.createdInDb ?
                     //     recipe.Diets?.map((r)=>(

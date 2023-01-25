@@ -33,7 +33,7 @@ export const Detail= (props)=>{
 
             <div className={style.tipos}>
             <h3 className={style.h3}>Diet Types:</h3>
-                <p className={style.valores}>{details.diets}</p>
+                <p className={style.valores}>{details.diets?.map((r)=>{return(<ul className={style.dietasP}>{r}</ul>)})}</p>
             </div>
 
             <div className={style.healthscore}>
