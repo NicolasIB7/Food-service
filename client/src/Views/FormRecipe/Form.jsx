@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import style from "./Form.module.css"
 import { postRecipe,getDiets } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -100,35 +100,37 @@ const Form= ()=>{
     
     return(
 
-        <div>
+        <div className={style.divForm}>
+            <h3 className={style.nombre}>Enjoy creating your own recipe!</h3>
         <form onSubmit={submitHandler}> 
             <div>
-                <label>Nombre:</label>
-                <input type="text" value={form.name} onChange={changeHandler} name="name"></input>
+                <label className={style.label}>Recipe name:</label>
+                <input type="text" value={form.name} onChange={changeHandler} name="name" className={style.input}></input>
                 {errors.name && <span>{errors.name}</span>}
             </div>
 
             <div>
-                <label>Resumen del plato:</label>
-                <input type="text" value={form.summary} onChange={changeHandler} name="summary"></input>
+                <label className={style.label}>Summary:</label>
+                <input type="text" value={form.summary} onChange={changeHandler} name="summary" placeholder="Your recipe summary" className={style.input}></input>
                 {errors.summary && <span>{errors.summary}</span>}
             </div>
 
             <div>
-                <label>Nivel de comida saludable:</label>
-                <input type="number" value={form.healthScore} onChange={changeHandler} name="healthScore"></input>
+                <label className={style.label}>HealthScore:</label>
+                <input type="number" value={form.healthScore} onChange={changeHandler} name="healthScore" placeholder="1-100" className={style.input}></input>
                 {errors.healthScore && <span>{errors.healthScore}</span>}
             </div>
 
-            <div>
-                <label>Paso a paso:</label>
-                <input type="text" value={form.steps} onChange={changeHandler} name="steps"></input>
+            <div className={style.step}>
+                <label className={style.label}>Steps:</label>
+                {/* <input ></input> */}
+                <textarea type="textarea" value={form.steps} onChange={changeHandler} name="steps" placeholder="Step by step" className={style.textarea}></textarea>
                 {errors.steps && <span>{errors.steps}</span>}
             </div>
 
-            <div>
-                <select onChange={handleSelect}>
-                    <option value={form.diets} name="diets">Diet</option>
+            <div  >
+                <select onChange={handleSelect} className={style.diet}>
+                    <option value={form.diets} name="diets">Diet type</option>
                     {diet?.map(c=>{
                         return(
                             <option value={c.name}>{c.name}</option>
@@ -138,16 +140,17 @@ const Form= ()=>{
 
             </div>
 
-            <button type="submit">SUBMIT</button>
+            <button type="submit" className={style.submit}>CREATE</button>
 
         </form>
-
+           
         {form.diets.map(el=>
-           <div>
-            <p>{el}</p>
-            <button onClick={()=>handleDelete(el)}>X</button>
+           <div >
+            <p >{el}</p>
+            <button onClick={()=>handleDelete(el)} >X</button>
            </div> 
            )}
+           
         </div>
     )
 }
