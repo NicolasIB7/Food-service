@@ -100,9 +100,10 @@ const Form= ()=>{
     
     return(
 
-        <div className={style.divForm}>
-            <h3 className={style.nombre}>Enjoy creating your own recipe!</h3>
-        <form onSubmit={submitHandler}> 
+        <div className={style.div}>
+            
+        <form onSubmit={submitHandler} className={style.divForm}> 
+        <h3 className={style.nombre}>Enjoy creating your own recipe!</h3>
             <div>
                 <label className={style.label}>Recipe name:</label>
                 <input type="text" value={form.name} onChange={changeHandler} name="name" className={style.input}></input>
@@ -143,15 +144,20 @@ const Form= ()=>{
             <button type="submit" className={style.submit}>CREATE</button>
 
         </form>
-           
+
+
+        <div className={style.dietas}>
         {form.diets.map(el=>
            <div >
-            <p >{el}</p>
-            <button onClick={()=>handleDelete(el)} >X</button>
+            
+            <button onClick={()=>handleDelete(el)} className={style.x} >X</button>
+            <p className={style.nombre}>Tipo de dieta: {el}</p>
            </div> 
            )}
-           
+           </div>
         </div>
+        
+
     )
 }
 

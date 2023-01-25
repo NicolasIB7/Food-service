@@ -83,3 +83,41 @@ font: italic small-caps bold 16px/2 cursive;
 .diet:hover{
     cursor: pointer;
 }
+
+
+.dietas{
+    
+
+    margin-left: 85%;
+    margin-bottom: 50px;
+    height: fit-content;
+    
+    margin-top: 50px;
+    position: absolute;
+
+}
+
+.div{
+    display: flex;
+}
+
+.x{
+align-self: flex-end;
+background-color: rgb(128, 0, 0);
+height: 30px;
+width: 30px;
+border-radius: 5px;
+margin-top: 10px;
+font: italic small-caps bold 14px/2 cursive;
+border: 0.5px solid black;
+}
+
+.x:hover{
+    scale: 1.1;
+    cursor: pointer;
+}
+
+.nombre{
+    font: italic small-caps bold 19px/2 cursive;
+
+}

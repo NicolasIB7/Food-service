@@ -2,6 +2,7 @@ import React, { useState,useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {useParams} from "react-router-dom";
 import { getRecipeById } from "../../redux/actions";
+import style from "./Detail.module.css"
 
 
 export const Detail= (props)=>{
@@ -17,29 +18,64 @@ export const Detail= (props)=>{
 
     return(
         
-    <div>
-        <h2>holaaa</h2>
-            <div>
-                <h1>{details.name}</h1>
+    <div className={style.div}>
+            <div className={style.nombrediv}>
+                <h2 className={style.nombre}>{details.name}</h2>
             </div>
-            <div>
-                <p>{details.steps}</p>
+            <div className={style.imagen}>
+            <img src={details.image} className={style.imagen1}/>
             </div>
-            <div>
-                <h1>{details.dishTypes}</h1>
+           
+            <div className={style.dishtypes}>
+                <h3 className={style.h3}>Dish Types:</h3>
+                <p className={style.valores}>{details.dishTypes}</p>
             </div>
-            <div>
-                <h1>{details.diets}</h1>
+
+            <div className={style.tipos}>
+            <h3 className={style.h3}>Diet Types:</h3>
+                <p className={style.valores}>{details.diets}</p>
             </div>
-            <div>
-                <h1>{details.healthScore}</h1>
+
+            <div className={style.healthscore}>
+            <h3 className={style.h3}>Health Score: </h3>
+                <p className={style.valores}>{details.healthScore}</p>
             </div>
-            <div>
-            <img src={details.image}/>
+
+            <div className={style.summary}>
+                <h3 className={style.h31} >Summary:</h3>
+            <p className={style.resumen} > {details.summary?.replace(/<[^>]*>/g, "")} </p>
             </div>
-            <div>
-            <p> {details.summary}</p>
+
+            <h3 className={style.h31}>Steps: </h3>
+            <div className={style.steps}>
+            
+              {details.createdInDb ? (
+                <p className={style.stepsdiv2}>{details.steps}</p>
+              ) : (
+                <div className={style.stepsdetailsdiv}>
+                  {details.steps?.map((step, i) => {
+                    return (
+                      <div key={i}>
+                        <p className={style.stepsdiv2}>
+                          Step {++i}: {step}
+                        </p>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
             </div>
+
+
+
+
+
+
+            {/* <div className={style.steps}>
+                <h3 className={style.h31}>Steps: </h3>
+                <p>{details.steps} </p>
+            </div> */}
+            
         
  
     </div>
