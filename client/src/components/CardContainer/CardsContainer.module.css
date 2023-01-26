@@ -19,3 +19,44 @@
     margin-left: 100px;
     justify-content: center;
 }
+
+
+
+.divfiltrados{
+    background-color: red;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cargatodo{
+    margin-right: 30%;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 7%;
+    background-color: rgba(0, 0, 0, 0.733);
+    color: azure;
+    cursor: pointer;
+    font: italic small-caps bold 15px/2 cursive;
+}
+.cargatodo:hover{
+    background-color: rgba(0, 0, 0, 0.527);
+    scale: 1.05;
+}
+
+.ordenados{
+margin-left: 10%;
+padding: 5px;
+cursor: pointer;
+border-radius: 7%;
+background-color: rgb(247, 213, 173);
+font-weight: bold;
+}
+
+.filtrados{
+margin-left: 3%;
+padding: 5px;
+cursor: pointer;
+border-radius: 7%;
+background-color: rgb(247, 213, 173);
+font-weight: bold;
+}

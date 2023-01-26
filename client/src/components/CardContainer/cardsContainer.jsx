@@ -58,21 +58,21 @@ const CardsContainer =()=>{
 
     return(
 <div>
-    <div>
-        <button onClick={e=>{handleClick(e)}}>Carga todos los personajes</button>
+    <div className={style.divFiltrados}>
+        <button onClick={e=>{handleClick(e)}} className={style.cargatodo} >All the recipes</button>
 
     
         
-            <select name="ORDER" onChange={e=>handlerClick(e)}>
-                <option value="default">DEFAULT</option>
+            <select name="ORDER" onChange={e=>handlerClick(e)} className={style.ordenados}>
+                <option value="default">Order</option>
                 <option value= "ascendente">Z-A</option>
                 <option value="descendente">A-Z</option>
                 <option value="health+">HEALTH ++</option>
                 <option value="health-">HEALTH --</option>
             </select>
 
-            <select name="FILTER" onChange={e=>handlerFilter(e)}>
-                <option value='All'>Todas las dietas</option>
+            <select name="FILTER" onChange={e=>handlerFilter(e)} className={style.filtrados}>
+                <option value='All'>Diet´s filter</option>
                 <option value='gluten free'>Gluten Free</option>
                 <option value='dairy free'>Dairy Free</option>
                 <option value='lacto ovo vegetarian'>Lacto Ovo Vegetarian</option>
