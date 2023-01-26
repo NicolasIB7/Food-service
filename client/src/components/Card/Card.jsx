@@ -9,7 +9,7 @@ const Card =(props)=>{
             </Link>
             <img src={props.image} className={style.imagenes}/>
             
-            <p>{props.diets}</p>
+            <p className={style.dietas}>{props.diets}</p>
 
         </div>
     )

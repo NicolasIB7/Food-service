@@ -58,10 +58,11 @@ const CardsContainer =()=>{
 
     return(
 <div>
+    <div>
         <button onClick={e=>{handleClick(e)}}>Carga todos los personajes</button>
 
     
-        <div>
+        
             <select name="ORDER" onChange={e=>handlerClick(e)}>
                 <option value="default">DEFAULT</option>
                 <option value= "ascendente">Z-A</option>
@@ -97,7 +98,7 @@ const CardsContainer =()=>{
                     id={recipe.id}
                     name={recipe.name}
                     image={recipe.image}
-                     diets={recipe.diets?.map((r)=>{return(<p>{r}</p>)}) || recipe.Diets.map(e=>e.name)}
+                     diets={recipe.diets?.map((r)=>{return(<ul>{r}</ul>)}) || recipe.Diets.map(e=>e.name)}
                     // diets={
                     //     recipe.createdInDb ?
                     //     recipe.Diets?.map((r)=>(
@@ -116,7 +117,7 @@ const CardsContainer =()=>{
                 />
             })
             ): !currentRecipes.length>0 && isLoading ? (
-                <Loading/>
+                <Loading className={style.loading}/>
             ):(<div>NOT FOUND</div>
             )}
 

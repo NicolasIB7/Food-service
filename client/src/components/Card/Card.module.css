@@ -1,5 +1,5 @@
 .card{
-    width: fit-content;
+    /* width: fit-content;
     border-radius: 10px;
     overflow: hidden;
     padding: 0.5em;
@@ -9,23 +9,34 @@
     border: 1.5 px solid black;
     justify-content: center;
     margin: auto;
-    transition: all 400ms ease;
+    transition: all 400ms ease; */
+    background-color: rgba(53, 39, 8, 0.904);
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.div:hover{
-    transform:translateY(-3%)
+.card:hover{
+    transform:translateY(-2%)
 }
 
 .nombres{
     display: flex;
-    color: azure;
+    color: rgb(173, 201, 178);
+    font: italic small-caps bold 19px/2 cursive;
+}
+
+.dietas{
+    font: italic small-caps bold 16px/2 cursive;
 }
 
 .link{
     text-decoration: none;
 }
 
-.imagenes{
+/* .imagenes{
     margin-top: 20px;
     object-fit: cover;
     height: 250px;
@@ -33,4 +44,9 @@
     border-radius: 5px;
     margin-left: 20px;
     margin-right: 20px;
+} */
+
+.imagenes{
+    border: 1px solid black;
+    border-radius: 10px;
 }

@@ -2,23 +2,38 @@ import React, { useState,useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {useParams} from "react-router-dom";
 import { getRecipeById } from "../../redux/actions";
-import style from "./Detail.module.css"
+import style from "./Detail.module.css";
+import LoadingDetail from "./LoadingDetail";
+
 
 
 export const Detail= (props)=>{
     const details=useSelector((state)=>state.detail);
+    const [isLoading,setisLoading]=useState(true);
 
     const {id}= useParams();
     const dispatch=useDispatch();
 
     useEffect(()=>{
-        dispatch(getRecipeById(id))
+        dispatch(getRecipeById(id)).then(()=>{
+          setisLoading(false)
+        })
+
+        
+        
     },[dispatch,id]);
     
 
+ 
+
     return(
+
+
         
     <div className={style.div}>
+
+        { !isLoading?
+<div>
             <div className={style.nombrediv}>
                 <h2 className={style.nombre}>{details.name}</h2>
             </div>
@@ -65,8 +80,8 @@ export const Detail= (props)=>{
                 </div>
               )}
             </div>
-
-
+                  </div>
+                 : <LoadingDetail></LoadingDetail> } 
 
 
 
@@ -79,7 +94,10 @@ export const Detail= (props)=>{
         
  
     </div>
+    
+ 
     )
+    
 }
 
 export default Detail;

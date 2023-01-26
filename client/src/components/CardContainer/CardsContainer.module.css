@@ -1,8 +1,21 @@
 .container{
-    border: 1px solid black;
+    /* border: 1px solid black;
     display: flex;
     flex-direction: row;
     border-radius: 15px;
     flex-wrap: wrap;
-    gap: 1em;
+    gap: 1em; */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+    margin: 30px;
+}
+
+.loading{
+    display:flex;
+    align-items: center;
+    margin:auto;
+    padding-left: 100px;
+    margin-left: 100px;
+    justify-content: center;
 }
