@@ -38,7 +38,9 @@ export const Detail= (props)=>{
                 <h2 className={style.nombre}>{details.name}</h2>
             </div>
             <div className={style.imagen}>
-            <img src={details.image} className={style.imagen1}/>
+              {details.image?(
+            <img src={details.image} className={style.imagen1}/>)
+            : (<img src="https://pbs.twimg.com/profile_images/1247183406/recetas_de_cocina_400x400.jpg" className={style.imagen1}></img>)}
             </div>
            
             <div className={style.dishtypes}>

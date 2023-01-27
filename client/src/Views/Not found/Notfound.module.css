@@ -1,0 +1,22 @@
+.a{
+    background-color: beige;
+   
+margin-left: 40%;
+    width: 100%;
+    margin-top: 5%;
+    border-radius: 5%;
+    padding-left: 60%;
+    padding-right: 60%;
+    justify-content: center;
+}
+
+
+.not{
+    color: red;
+    display: flex;
+    width: 100%;
+    font-size: 60px;
+    display: flex;
+    
+
+}

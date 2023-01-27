@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { filterRecipes, getDiets, getRecipes, orderRecipes } from "../../redux/actions";
 import Loading from "../../Views/Loading/loading";
+import Notfound from "../../Views/Not found/Notfound";
 import Paginate from "../../Views/Pagination/Paginate";
 import Card from "../Card/Card";
 import style from "./CardsContainer.module.css";
+
 
 const CardsContainer =()=>{
 
@@ -97,8 +99,10 @@ const CardsContainer =()=>{
                 return <Card
                     id={recipe.id}
                     name={recipe.name}
-                    image={recipe.image}
-                     diets={recipe.diets?.map((r)=>{return(<ul>{r}</ul>)}) || recipe.Diets.map(e=>e.name)}
+                    image={recipe.createdInDb? "https://pbs.twimg.com/profile_images/1247183406/recetas_de_cocina_400x400.jpg":
+                    recipe.image}
+                    
+                     diets={recipe.diets?.map((r)=>{return(<ul>{r}</ul>)}) || recipe.Diets.map(e=><ul>{e.name}</ul>)}
                     // diets={
                     //     recipe.createdInDb ?
                     //     recipe.Diets?.map((r)=>(
@@ -118,7 +122,7 @@ const CardsContainer =()=>{
             })
             ): !currentRecipes.length>0 && isLoading ? (
                 <Loading className={style.loading}/>
-            ):(<div>NOT FOUND</div>
+            ):(<Notfound></Notfound>
             )}
 
         </div>

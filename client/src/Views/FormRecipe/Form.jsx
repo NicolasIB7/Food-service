@@ -84,8 +84,8 @@ const Form= ()=>{
     const submitHandler=(event)=>{
          event.preventDefault();
          dispatch(postRecipe(form))
-         .then(res=>alert("receta creada correctamente"))
-         .catch(err=>alert("No se pudo crear la receta, error"))
+         .then(res=>alert("Your recipe has been created successfully!!"))
+         .catch(err=>alert("Sorry, an error has occurred :( "))
     }
 
     const handleDelete=(e)=>{

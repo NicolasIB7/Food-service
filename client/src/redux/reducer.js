@@ -60,7 +60,7 @@ switch(action.type){
         case FILTER:
             const recetas=state.copia;
             const filteredList =
-            action.payload==="All"? recetas: recetas.filter(item => item.diets?.includes(action.payload))
+            action.payload==="All"? recetas: recetas.filter(item => item.diets?.includes(action.payload) || item.Diets?.some(diet => diet.name === action.payload))
             return {...state,recipes:filteredList}
             
             
