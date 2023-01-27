@@ -1,58 +1,40 @@
  const axios =require("axios");
 // const recipesRouter = require("../routes/recipesRouter");
- //const {API_KEY} =process.env;
+
  const { Recipe, Diet } = require("../db.js");
  const {Op}=require("sequelize")
- const API_KEY="160bdeb439294829b87405f71564c879"
+ 
+ const {API_KEY} =process.env;
 
 
-//  const cleanArray= (arr)=>{
-//       arr.map((elem)=>{
-//          return{
-//              id:elem.id,
-//              name:elem.title,
-//              summary:elem.summary,
-//              healthScore:elem.healthScore,
-//          }
-//      })
-//  }
+const modifyData=(el)=>{
 
-//  const createRecipe=async (name,summary,healthScore,steps,diets)=>{
-//    const newRecipe= await Recipe.create({name,summary,healthScore,steps,diets});
+    return {
 
-  
-
-//    return newRecipe;
-
-//  };
-
+        id:el.id,
+         name:el.title,
+         summary:el.summary,
+         healthScore:el.healthScore,
+         steps:(el.analyzedInstructions[0]?.steps?.map(item=>item.step)),
+         image:el.image,
+         dishTypes:el.dishTypes?.map(dish=>dish),
+         diets:el.diets.map(diet=>diet),
+    }
+}
 
 
 
   const getAllRecipes=async()=>{
 
-      
-    
-
-     const allApiRecipes=(
-          await axios.get("https://apimocha.com/n.s.recipes/allrecipes")
+    const allApiRecipes=(
+        await axios.get("https://apimocha.com/n.s.recipes/allrecipes")
       )
-      const API=allApiRecipes.data.results.map(el=>{
-        return {
-
-            id:el.id,
-             name:el.title,
-             summary:el.summary,
-             healthScore:el.healthScore,
-             steps:(el.analyzedInstructions[0]?.steps?.map(item=>item.step)),
-             image:el.image,
-             dishTypes:el.dishTypes?.map(dish=>dish),
-             diets:el.diets.map(diet=>diet),
-        }
-      })
+     // `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`
+     
+    const API=allApiRecipes.data.results.map((el)=>modifyData(el))
 
       
-      let databaseRecipes=await Recipe.findAll({
+    let databaseRecipes=await Recipe.findAll({
         include:[{
           model:Diet,
           //as:"diets",
@@ -64,19 +46,11 @@
           
       });
       
-      
-      // databaseRecipes=databaseRecipes.map(recipe=>modify(recipe));
-
-      //`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`
-      //const apiRecipes=cleanArray(API);
-     return [...API,...databaseRecipes]
+    return [...API,...databaseRecipes]
   }
 
   
-  // const modify=(r)=>{
-  //   r.Diets=r.Diets.map(diet=>diet.name)
-  //   return r;
-  // }
+
 
 
 
@@ -85,38 +59,34 @@
   const getRecipeById=async (id,fuente)=>{
 
     if(fuente==="api"){
-           const API=(await axios.get("https://apimocha.com/n.s.recipes/allrecipes"))
-           const filterAPI=API.data.results.map(el=>{
-            return {
-    
-                id:el.id.toString(),
-                 name:el.title,
-                 summary:el.summary,
-                 healthScore:el.healthScore,
-                 steps:(el.analyzedInstructions[0]?.steps?.map(item=>item.step)),
-                 dishTypes:el.dishTypes?.map(dish=>dish),
-                 image:el.image,
-                 diets:el.diets.map(diet=>diet),
-            }
-          })
+           const API=(await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`))
+           //"https://apimocha.com/n.s.recipes/allrecipes"
 
-          const filtradoId=filterAPI.find(recipe=>recipe.id===id);
+           //USANDO URL DE TODAS LAS RECETAS:
+          // const filterAPI=API.data.results.map((el)=>modifyData(el))
 
+          // const filtradoId=filterAPI.find(recipe=>recipe.id.toString()===id);
+          //USANDO URL DE ID
+          const filtradoId=modifyData(API.data)
           
           return filtradoId;
     }
- else{
+    else{
 
- const bdd= await Recipe.findByPk(id, {
-    include:{
-        model:Diet,
-        attributes:["name"],
-        through:{attributes:[]}
-    }
- })
-  return bdd;
+        const bdd= await Recipe.findByPk(id, {
+          include:{
+          model:Diet,
+          attributes:["name"],
+          through:{attributes:[]}
+          }
+    })
+          return bdd;
  }
 }
+
+
+
+
 
  const searchRecipeByName= async (name) =>{
     const databaseRecipes= await Recipe.findAll({include:{
@@ -134,25 +104,13 @@
          await axios.get("https://apimocha.com/n.s.recipes/allrecipes")
      );
      //`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`
-     //const apiRecipe= cleanArray(apiRecipeRaw.results);
+
     
-     const API=apiRecipeRaw.data.results.map(el=>{
-        return {
+   
 
-          id:el.id,
-          name:el.title,
-          summary:el.summary,
-          healthScore:el.healthScore,
-          steps:(el.analyzedInstructions[0]?.steps?.map(item=>item.step)),
-          image:el.image,
-          dishTypes:el.dishTypes?.map(dish=>dish),
-          diets:el.diets,
-        }
-      })
+    const API=apiRecipeRaw.data.results.map((el)=>modifyData(el))
 
-      const filteredApi=API.filter(recipe=>recipe.name.toLowerCase().includes(name.toLowerCase()))
-
-
+    const filteredApi=API.filter(recipe=>recipe.name.toLowerCase().includes(name.toLowerCase()))
 
      return [...filteredApi,...databaseRecipes]
  }
