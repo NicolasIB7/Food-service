@@ -121,3 +121,15 @@ border: 0.5px solid black;
     font: italic small-caps bold 19px/2 cursive;
 
 }
+
+.disabled{
+    width: 100%;
+    padding: 8px 16px;
+    margin-top: 32px;
+  
+    border-radius: 5px;
+    display: block;
+    background-color:rgba(0, 0, 0, 0.24);
+    color: #f6f6f6;
+    font: italic small-caps bold 17px/2 cursive;
+}

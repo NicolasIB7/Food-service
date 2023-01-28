@@ -49,6 +49,23 @@ try {
 
 
 
+const deleted=async (req,res)=>{
+    const {id}=req.params;
+
+    try {
+        await Recipe.destroy({
+            where:{
+                id:id
+            }
+        })
+        res.status(200).send({msg:"The recipe has been deleted."})
+    } catch (error) {
+        res.status(400).send({error:error.message})
+    }
+}
+
+
+
 
 
 
@@ -61,6 +78,7 @@ try {
      getRecipesHandler,
      getRecipeHandler,
      createRecipesHandler,
+     deleted
  }
 
 
