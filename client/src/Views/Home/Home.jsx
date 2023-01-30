@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import CardsContainer from "../../components/CardContainer/CardsContainer";
 import { getRecipe, getRecipes } from "../../redux/actions";
-
+import CardsContainer from "../../components/CardContainer/CardsContainer.jsx";
 
 
 
