@@ -11,7 +11,7 @@ export const FILTER="FILTER;"
 
 export const getRecipes=()=>{
     return async function(dispatch){
-        const apiData=await axios.get('http://localhost:3001/recipes')
+        const apiData=await axios.get('/recipes')
         const recipes=apiData.data;
 
         dispatch({type:GET_RECIPES,payload:recipes}) //despacha la action, no importo el hook porque acá no interesa, estamos en redux, el archivo que va a usar esta funcion sí tednrá que importar useDispatch
@@ -23,7 +23,7 @@ export const getRecipes=()=>{
 
 export const getRecipeByName=(name)=>{
     return async function(dispatch){
-        const apiData=await axios.get(`http://localhost:3001/recipes?name=${name}`)
+        const apiData=await axios.get(`/recipes?name=${name}`)
         const recipe=apiData.data;
 
         dispatch({type:GET_RECIPE_BY_NAME,payload:recipe}) //despacha la action, no importo el hook porque acá no interesa, estamos en redux, el archivo que va a usar esta funcion sí tednrá que importar useDispatch
@@ -33,7 +33,7 @@ export const getRecipeByName=(name)=>{
 
 export const postRecipe=(id)=>{
     return async function(dispatch){
-        const apiData=await axios.post('http://localhost:3001/recipes',id)
+        const apiData=await axios.post('/recipes',id)
         const post=apiData.data;
 
         dispatch({type:POST_RECIPE,payload:post}) //despacha la action, no importo el hook porque acá no interesa, estamos en redux, el archivo que va a usar esta funcion sí tednrá que importar useDispatch
@@ -43,7 +43,7 @@ export const postRecipe=(id)=>{
 
 export const getRecipeById=(id)=>{
     return async function(dispatch){
-        const apiData=await axios.get(`http://localhost:3001/recipes/${id}`)
+        const apiData=await axios.get(`/recipes/${id}`)
         const getId=apiData.data;
 
         dispatch({type:GET_BY_ID,payload:getId})
@@ -52,7 +52,7 @@ export const getRecipeById=(id)=>{
 
 export const getDiets=()=>{
     return async function(dispatch){
-        const apiData=await axios.get("http://localhost:3001/diets")
+        const apiData=await axios.get("/diets")
         const Dietas=apiData.data;
 
         dispatch({type:GET_DIETS,payload:Dietas})

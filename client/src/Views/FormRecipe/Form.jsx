@@ -106,26 +106,26 @@ const Form= ()=>{
         <h3 className={style.nombre}>Enjoy creating your own recipe!</h3>
             <div>
                 <label className={style.label}>Recipe name:</label>
-                <input type="text" value={form.name} onChange={changeHandler} name="name" className={style.input}></input>
+                <input type="text" value={form.name} onChange={changeHandler} name="name" className={style.input} ></input>
                 {errors.name && <span>{errors.name}</span>}
             </div>
 
             <div>
                 <label className={style.label}>Summary:</label>
-                <input type="text" value={form.summary} onChange={changeHandler} name="summary" placeholder="Your recipe summary" className={style.input}></input>
+                <input type="text" value={form.summary} onChange={changeHandler} name="summary" placeholder="Your recipe summary" className={style.input} ></input>
                 {errors.summary && <span>{errors.summary}</span>}
             </div>
 
             <div>
                 <label className={style.label}>HealthScore:</label>
-                <input type="number" value={form.healthScore} onChange={changeHandler} name="healthScore" placeholder="1-100" className={style.input}></input>
+                <input type="number" value={form.healthScore} onChange={changeHandler} name="healthScore" placeholder="1-100" className={style.input} ></input>
                 {errors.healthScore && <span>{errors.healthScore}</span>}
             </div>
 
             <div className={style.step}>
                 <label className={style.label}>Steps:</label>
                 {/* <input ></input> */}
-                <textarea type="textarea" value={form.steps} onChange={changeHandler} name="steps" placeholder="Step by step" className={style.textarea}></textarea>
+                <textarea type="textarea" value={form.steps} onChange={changeHandler} name="steps" placeholder="Step by step" className={style.textarea} ></textarea>
                 {errors.steps && <span>{errors.steps}</span>}
             </div>
 
