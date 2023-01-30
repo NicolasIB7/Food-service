@@ -4,6 +4,7 @@ import style from "./Landing.module.css"
 const Landing= ()=>{
     return(
     <>
+
         <div className={style.body}>
             <h2 className={style.p}>
                 Welcome to Henry food
@@ -17,7 +18,7 @@ const Landing= ()=>{
                 ENJOY
                 </Link>
         </div>
-    
+
     
     </>
     )

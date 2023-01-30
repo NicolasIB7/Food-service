@@ -68,12 +68,4 @@ export const filterRecipes=(payload)=>{
     return {type:FILTER,payload}
 }
 
-
-// export const filter=()=>{
-//     dispatch({type:filter})
-// }    
-
-
-
-
-//AQUI TAMBIEN SE PONDRAN LOS FILTROS, VER APP RICK Y MORTY
+    

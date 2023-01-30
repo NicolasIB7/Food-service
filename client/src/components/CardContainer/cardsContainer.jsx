@@ -10,12 +10,13 @@ import style from "./CardsContainer.module.css";
 
 const CardsContainer =()=>{
 
+   
     const dispatch=useDispatch();
     const recipes=useSelector(state=>state.recipes) //ESTO ME TRAE EL ARRAY DE RECETAS DE MI STORE, está atento ante algun cambio que suceaa en mi store
     const diet=useSelector(state=>state.diets)
     const [isLoading,setisLoading]=useState(true);
-    //paginado
-
+    
+    //------------------------------------PAGINADO---------------------------------------------------------//
     const [currentPage,setCurrentPage]=useState(1) // creamos un estado local para la pagina actual, lo seteamos en 1 porque es nuestra primera pagina
     const [recipesPerPage,setRecipesPerPage]=useState(9) //le digo cuantas recetas quiero yo por pagina y lo seteo en ese numero
     const indexOfLastRecipe=currentPage*recipesPerPage;
@@ -24,48 +25,42 @@ const CardsContainer =()=>{
     const paginado=(pageNumber)=>{
         setCurrentPage(pageNumber)
     }
-
-
-
-
-
+//---------------------------------------------FILTROS Y ORDENAMIENTOS-------------------------------------------//
     const handlerClick=(e)=>{
         const {name,value}=e.target;
 
         switch(name){
             case "ORDER":
                 return dispatch(orderRecipes(value)) 
-                
-            // case "FILTER":
-            //     return dispatch(filterRecipes(value))   
+  
         }
     }
 
 
-
     const handlerFilter=(e)=>{
-        dispatch(filterRecipes(e.target.value))
+        e.preventDefault();
+        dispatch(filterRecipes(e.target.value));
     }
 
     const handleClick=(e)=>{
         e.preventDefault();
         dispatch(getRecipes())
     }
-
+    
 
     if(currentRecipes.length>0 && isLoading){
         setisLoading(false)
     }
 
-
+    
     return(
 <div>
-    <div className={style.divFiltrados}>
+    <div className={style.divFiltrados} >
         <button onClick={e=>{handleClick(e)}} className={style.cargatodo} >All the recipes</button>
 
     
         
-            <select name="ORDER" onChange={e=>handlerClick(e)} className={style.ordenados}>
+            <select name="ORDER" onChange={e=>handlerClick(e)} className={style.ordenados} >
                 <option value="default">Order</option>
                 <option value= "ascendente">Z-A</option>
                 <option value="descendente">A-Z</option>
@@ -103,33 +98,26 @@ const CardsContainer =()=>{
                     recipe.image}
                     
                      diets={recipe.diets?.map((r)=>{return(<ul>{r}</ul>)}) || recipe.Diets.map(e=><ul>{e.name}</ul>)}
-                    // diets={
-                    //     recipe.createdInDb ?
-                    //     recipe.Diets?.map((r)=>(
-                            
-                    //             <p>{r.name}</p>
-                            
-                    //     )):recipe.diets?.map((r)=>{
-                    //         return(
-                                
-                    //                 <p>{r}</p>
-                                
-                    //         )
-                    //     })
-                    // }
                 
                 />
             })
-            ): !currentRecipes.length>0 && isLoading ? (
-                <Loading className={style.loading}/>
-            ):(<Notfound></Notfound>
-            )}
+            ): !currentRecipes.length>0 && isLoading ? 
+            
+            (  <Loading className={style.loading}/>) 
+            :
+            (<Notfound></Notfound>)
+            }
 
         </div>
+
+
         <Paginate
         recipesPerPage={recipesPerPage}
         recipes={recipes.length}
-        paginado={paginado}/>
+        paginado={paginado}
+        
+        />
+
     </div>
 
        

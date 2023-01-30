@@ -9,6 +9,7 @@ body {
 	align-items: center;
   justify-content: center;
 
+  height: 480px ;
   
 }
 .animatedword {
@@ -30,6 +31,7 @@ background-color: rgba(22, 21, 21, 0.644);
   margin:20% 0;
   text-decoration:none;
   border-radius: 7px;
+
 }
 
 .animatedword:hover {
@@ -53,6 +55,7 @@ background-color: rgba(22, 21, 21, 0.644);
     display: flex;
     justify-content: center;
     padding-top: 3%;
+ 
   }
   
 

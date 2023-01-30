@@ -18,9 +18,6 @@ export const Detail= (props)=>{
         dispatch(getRecipeById(id)).then(()=>{
           setisLoading(false)
         })
-
-        
-        
     },[dispatch,id]);
     
 
@@ -33,7 +30,7 @@ export const Detail= (props)=>{
     <div className={style.div}>
 
         { !isLoading?
-<div>
+      <div>
             <div className={style.nombrediv}>
                 <h2 className={style.nombre}>{details.name}</h2>
             </div>
@@ -85,16 +82,6 @@ export const Detail= (props)=>{
                   </div>
                  : <LoadingDetail></LoadingDetail> } 
 
-
-
-
-            {/* <div className={style.steps}>
-                <h3 className={style.h31}>Steps: </h3>
-                <p>{details.steps} </p>
-            </div> */}
-            
-        
- 
     </div>
     
  

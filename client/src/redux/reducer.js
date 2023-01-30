@@ -46,17 +46,6 @@ switch(action.type){
         
         return {...state,recipes:order}
 
-        // case FILTER:
-        //     const allRecipes=state.recipes;
-        //     const all=
-        //     action.payload==="all"
-        //     ? allRecipes
-        //     : allRecipes.filter((el)=>el.diets?.find(d=>{
-        //         return d.name===action.payload || d===action.payload
-        //     }));
-
-        //     return{...state,recipes:all}
-
         case FILTER:
             const recetas=state.copia;
             const filteredList =
