@@ -7,19 +7,14 @@ const NavBar= ({onSearch})=>{
         <div className={style.maincontainer}>
             <div className={style.imagen}>
              <Link to="/home"  >
-                <img src="https://cdn-icons-png.flaticon.com/512/6505/6505958.png" className={style.logo}/>
+                <img src="https://cdn-icons-png.flaticon.com/512/6505/6505958.png" alt="Imagen" className={style.logo}/>
              </Link>
              </div>
 
-
             <SearchBar onSearch={onSearch} />
-           
            
             <Link to="/create" className={style.links} >Create your recipe</Link>
             <Link to="/about" className={style.links}>About</Link>
-            
-    
-    
         </div>
     )
 }

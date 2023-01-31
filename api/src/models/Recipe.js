@@ -13,6 +13,10 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
       unique:true,
+      validate:{
+        len:[2,12],
+      }
+      
     },
     summary:{
       type:DataTypes.TEXT,
@@ -22,7 +26,11 @@ module.exports = (sequelize) => {
       type:DataTypes.INTEGER,
       allowNull:false,
       defaultValue:0,
-
+      validate:{
+        isNumeric:true,
+        max:100,
+        min:1,
+      },
     },
     steps:{
       type:DataTypes.JSON,

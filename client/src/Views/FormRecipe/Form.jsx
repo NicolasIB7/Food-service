@@ -29,7 +29,7 @@ export const validate=(form)=>{
     //     errors.type= "it has to be a different diet"
     // }
    
-    return errors;
+        return errors;
   }
 
 
@@ -41,11 +41,11 @@ const Form= ()=>{
 
     const diet=useSelector(state=>state.diets)
 
-    const [form,setForm]=useState({
-        name:"",
-        summary:"",
-        healthScore:"",
-        steps:"",
+    const [form,setForm]=useState({ // Creo un estado con los datos de mis inputs, el formulario debe ser un reflejo del estado, el formulario tiene 
+        name:"",                     //que mostrar si o si lo que esté en el estado, para eso pongo el value en los inputs, con esto hacemos que tenga si o si
+        summary:"",                   //lo que tenga adentro el estado, entonces lo que yo escriba ahora en mi estado se verá reflejado en mis inputs
+        healthScore:"",              // pero si quiero escribir en mi formulario no voy a poder, para hacer eso tengo que ejecutar una funcion para que
+        steps:"",                    // cuando yo escriba en el formulario esta se ejecute y TAMBIEN cambie mi estado, con esto tendremos el formulario controlado.
         diets:[],
     })
 
@@ -86,6 +86,7 @@ const Form= ()=>{
          dispatch(postRecipe(form))
          .then(res=>alert("Your recipe has been created successfully!!"))
          .catch(err=>alert("Sorry, an error has occurred :( "))
+         window.location.reload(true)
     }
 
     const handleDelete=(e)=>{
@@ -94,70 +95,71 @@ const Form= ()=>{
         })
     }
 
+   
+
     useEffect(()=>{
         dispatch(getDiets())
     },[dispatch])
     
-    return(
+        return(
 
         <div className={style.div}>
             
-        <form onSubmit={submitHandler} className={style.divForm}> 
-        <h3 className={style.nombre}>Enjoy creating your own recipe!</h3>
-            <div>
-                <label className={style.label}>Recipe name:</label>
-                <input type="text" value={form.name} onChange={changeHandler} name="name" className={style.input} ></input>
-                {errors.name && <span>{errors.name}</span>}
-            </div>
+            <form onSubmit={submitHandler} className={style.divForm}> 
+                    <h3 className={style.nombre}>Enjoy creating your own recipe!</h3>
+                <div>
+                    <label className={style.label}>Recipe name:</label>
+                    <input type="text" value={form.name} onChange={changeHandler} name="name" className={style.input} ></input>
+                    {errors.name && <span>{errors.name}</span>}
+                </div>
 
-            <div>
-                <label className={style.label}>Summary:</label>
-                <input type="text" value={form.summary} onChange={changeHandler} name="summary" placeholder="Your recipe summary" className={style.input} ></input>
-                {errors.summary && <span>{errors.summary}</span>}
-            </div>
+                <div>
+                    <label className={style.label}>Summary:</label>
+                    <input type="text" value={form.summary} onChange={changeHandler} name="summary" placeholder="Your recipe summary" className={style.input} ></input>
+                    {errors.summary && <span>{errors.summary}</span>}
+                </div>
 
-            <div>
-                <label className={style.label}>HealthScore:</label>
-                <input type="number" value={form.healthScore} onChange={changeHandler} name="healthScore" placeholder="1-100" className={style.input} ></input>
-                {errors.healthScore && <span>{errors.healthScore}</span>}
-            </div>
+                <div>
+                    <label className={style.label}>HealthScore:</label>
+                    <input type="number" value={form.healthScore} onChange={changeHandler} name="healthScore" placeholder="1-100" className={style.input} ></input>
+                    {errors.healthScore && <span>{errors.healthScore}</span>}
+                </div>
 
-            <div className={style.step}>
-                <label className={style.label}>Steps:</label>
-                {/* <input ></input> */}
-                <textarea type="textarea" value={form.steps} onChange={changeHandler} name="steps" placeholder="Step by step" className={style.textarea} ></textarea>
-                {errors.steps && <span>{errors.steps}</span>}
-            </div>
+                <div className={style.step}>
+                    <label className={style.label}>Steps:</label>
+                    {/* <input ></input> */}
+                    <textarea type="textarea" value={form.steps} onChange={changeHandler} name="steps" placeholder="Step by step" className={style.textarea} ></textarea>
+                    {errors.steps && <span>{errors.steps}</span>}
+                </div>
 
-            <div  >
-                <select onChange={handleSelect} className={style.diet}>
+                <div  >
+                    <select onChange={handleSelect} className={style.diet}>
                     <option value={form.diets} name="diets">Diet type</option>
                     {diet?.map(c=>{
                         return(
                             <option value={c.name}>{c.name}</option>
                         )
-                    })}
-                </select>
-
-            </div>
+                        })}
+                    </select>
+                </div>
             
                     {(!form.name || !form.summary || !form.healthScore || !form.steps || !form.diets.length) ? 
                     <button disabled="disabled" className={style.disabled}>CREATE</button>
                     :
-                    <button type="submit" className={style.submit} >CREATE</button>}
+                    <button type="submit" className={style.submit}>CREATE</button>}
                  
                     
-        </form>
+            </form>
 
 
-        <div className={style.dietas}>
-        {form.diets.map(el=>
-           <div >
+            <div className={style.dietas}>
+                {form.diets.map(el=>
+                    <div >
             
-            <button onClick={()=>handleDelete(el)} className={style.x} >X</button>
-            <p className={style.nombre}>Tipo de dieta: {el}</p>
-           </div> 
-           )}
+                    <button onClick={()=>handleDelete(el)} className={style.x} >X</button>
+                    <p className={style.nombre}>Tipo de dieta: {el}</p>
+                    </div> 
+                )}
            </div>
         </div>
         
@@ -166,3 +168,22 @@ const Form= ()=>{
 }
 
 export default Form;
+
+
+
+// class form extends React.Component{
+//     constructor(props){
+//         super(props)
+//     }
+//     render(){
+//         return(
+
+//         )
+//     }
+// }
+
+
+// //fetch().then((response)=>response.JSON())
+// .then(data=>{
+
+// })

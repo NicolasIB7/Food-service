@@ -17,7 +17,7 @@
     cursor: pointer;
 }
 
-.button:focus{
+.button:focus, .button:active{
     background-color: rgb(59, 173, 59);
 }
 

@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import {useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { filterRecipes, getDiets, getRecipes, orderRecipes } from "../../redux/actions";
+import { deleteRecipe, filterRecipes, getRecipes, orderRecipes } from "../../redux/actions";
 import Loading from "../../Views/Loading/loading";
 import Notfound from "../../Views/Not found/Notfound";
 import Paginate from "../../Views/Pagination/Paginate";
@@ -13,27 +13,30 @@ const CardsContainer =()=>{
    
     const dispatch=useDispatch();
     const recipes=useSelector(state=>state.recipes) //ESTO ME TRAE EL ARRAY DE RECETAS DE MI STORE, está atento ante algun cambio que suceaa en mi store
-    const diet=useSelector(state=>state.diets)
     const [isLoading,setisLoading]=useState(true);
     
     //------------------------------------PAGINADO---------------------------------------------------------//
     const [currentPage,setCurrentPage]=useState(1) // creamos un estado local para la pagina actual, lo seteamos en 1 porque es nuestra primera pagina
-    const [recipesPerPage,setRecipesPerPage]=useState(9) //le digo cuantas recetas quiero yo por pagina y lo seteo en ese numero
+    const [recipesPerPage]=useState(9) //le digo cuantas recetas quiero yo por pagina y lo seteo en ese numero
     const indexOfLastRecipe=currentPage*recipesPerPage;
     const indexOfFirstRecipe=indexOfLastRecipe-recipesPerPage;
     const currentRecipes=recipes.slice(indexOfFirstRecipe,indexOfLastRecipe) //agarro un array y lo parto dependiendo lo que yo le pase como parametro, entonces esto me devolverá un arreglo donde me devuelva desde el 0 hasta el 9 y me renderiza solo esas recetas
+    
     const paginado=(pageNumber)=>{
         setCurrentPage(pageNumber)
     }
+    const previousPage=()=>{
+        const a=currentPage-1;
+        setCurrentPage(a)
+    }
+    const nextPage=()=>{
+        const a=currentPage+1;
+        setCurrentPage(a)
+    }
 //---------------------------------------------FILTROS Y ORDENAMIENTOS-------------------------------------------//
     const handlerClick=(e)=>{
-        const {name,value}=e.target;
-
-        switch(name){
-            case "ORDER":
-                return dispatch(orderRecipes(value)) 
-  
-        }
+        e.preventDefault();
+         dispatch(orderRecipes(e.target.value));
     }
 
 
@@ -46,6 +49,8 @@ const CardsContainer =()=>{
         e.preventDefault();
         dispatch(getRecipes())
     }
+
+  
     
 
     if(currentRecipes.length>0 && isLoading){
@@ -81,14 +86,14 @@ const CardsContainer =()=>{
                 <option value='fodmap fiendly'>Fodmap Friendly</option>
                 <option value='vegetarian'>Vegetarian</option> 
             </select>
-        </div>
+    </div>
 
         
         
         
 
-        <div className={style.container}>
-            {currentRecipes.length>0 && !isLoading ? (
+    <div className={style.container}>
+        {currentRecipes.length>0 && !isLoading ? (
 
             currentRecipes.map(recipe=>{
                 return <Card
@@ -96,10 +101,9 @@ const CardsContainer =()=>{
                     name={recipe.name}
                     image={recipe.createdInDb? "https://pbs.twimg.com/profile_images/1247183406/recetas_de_cocina_400x400.jpg":
                     recipe.image}
-                    
                      diets={recipe.diets?.map((r)=>{return(<ul>{r}</ul>)}) || recipe.Diets.map(e=><ul>{e.name}</ul>)}
-                
-                />
+                     createdInDb={recipe.createdInDb}
+                        />
             })
             ): !currentRecipes.length>0 && isLoading ? 
             
@@ -108,14 +112,16 @@ const CardsContainer =()=>{
             (<Notfound></Notfound>)
             }
 
-        </div>
+    </div>
 
 
         <Paginate
         recipesPerPage={recipesPerPage}
         recipes={recipes.length}
         paginado={paginado}
-        
+        previousPage={previousPage}
+        nextPage={nextPage}
+        currentPage={currentPage}
         />
 
     </div>

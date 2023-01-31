@@ -1,4 +1,4 @@
-import { GET_BY_ID, GET_RECIPES, GET_RECIPE_BY_NAME,GET_DIETS,ORDER,FILTER } from "./actions";
+import { GET_BY_ID, GET_RECIPES, GET_RECIPE_BY_NAME,GET_DIETS,ORDER,FILTER,DELETE } from "./actions";
 
 
 const initialState={
@@ -25,7 +25,7 @@ switch(action.type){
         return {...state,diets:action.payload} 
         
     case ORDER:
-        const orderCopy=[...state.recipes];
+        const orderCopy=state.recipes;
         const order=orderCopy.sort((a,b)=>{
             if(action.payload==="ascendente" && a.name<b.name){
                 return 1;
@@ -44,14 +44,16 @@ switch(action.type){
             else{return 0};
         })
         
-        return {...state,recipes:order}
+        return {...state,recipes:[...order]}
 
         case FILTER:
             const recetas=state.copia;
             const filteredList =
             action.payload==="All"? recetas: recetas.filter(item => item.diets?.includes(action.payload) || item.Diets?.some(diet => diet.name === action.payload))
             return {...state,recipes:filteredList}
-            
+        
+        case DELETE:
+            return {...state,recipes:action.payload}
             
         
     default:

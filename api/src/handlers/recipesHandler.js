@@ -66,6 +66,27 @@ const deleted=async (req,res)=>{
 }
 
 
+const updated=async (req,res)=>{
+    const {id}=req.params;
+    const {attribute}=req.params;
+    const {value}=req.query;
+
+
+    try {
+        await Recipe.update(
+            {[attribute]:value},
+            {
+            where:{
+                id:id
+            }
+        })
+        res.status(200).send({msg:"Receta actualizada"})
+    } catch (error) {
+        res.status(400).send({error:error.message})
+    }
+}
+
+
 
 
 
@@ -79,7 +100,8 @@ const deleted=async (req,res)=>{
      getRecipesHandler,
      getRecipeHandler,
      createRecipesHandler,
-     deleted
+     deleted,
+     updated
  }
 
 

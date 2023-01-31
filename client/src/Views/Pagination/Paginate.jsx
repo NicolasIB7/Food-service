@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./Paginate.module.css";
 
-const Paginate=({recipesPerPage,recipes,paginado})=>{
+const Paginate=({recipesPerPage,recipes,paginado,previousPage,nextPage,currentPage})=>{
     const pageNumber=[];
 
     for(let i=1;i<=Math.ceil(recipes/recipesPerPage);i++){//me va a redondear todos mis personajes sobre los personajes que tengo por pagina
@@ -11,11 +11,16 @@ const Paginate=({recipesPerPage,recipes,paginado})=>{
     return(
         <nav>
             <ul className={style.ul}>
+                {!pageNumber.length<=0 && 
+                 <button onClick={()=>previousPage()} className={style.button}>🢀</button>}
+
                 {pageNumber && pageNumber.map((number)=>(
-                    
-                    <button onClick={()=>paginado(number)} className={style.button}>{number}</button> 
-                    
+     
+                    <button onClick={()=>paginado(number)} className={style.button}>{number}</button>   
                 ))}
+                {!pageNumber.length<=0 &&
+                <button onClick={()=>nextPage()} className={style.button}>🢂</button>}
+
             </ul>
 
 

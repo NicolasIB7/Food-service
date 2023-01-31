@@ -50,3 +50,19 @@
     border: 1px solid black;
     border-radius: 10px;
 }
+
+.delete{
+    align-self: center;
+background-color: rgb(128, 25, 25);
+height: 30px;
+width: 30px;
+border-radius: 5px;
+margin-top: 10px;
+font: italic small-caps bold 14px/2 cursive;
+border: 0.5px solid black;
+}
+
+.delete:hover{
+    scale: 1.1;
+    cursor: pointer;
+}

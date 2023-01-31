@@ -20,52 +20,47 @@ export const Detail= (props)=>{
         })
     },[dispatch,id]);
     
-
- 
-
     return(
-
-
-        
+    
     <div className={style.div}>
 
         { !isLoading?
-      <div>
+          <div>
             <div className={style.nombrediv}>
-                <h2 className={style.nombre}>{details.name}</h2>
+              <h2 className={style.nombre}>{details.name}</h2>
             </div>
             <div className={style.imagen}>
               {details.image?(
-            <img src={details.image} className={style.imagen1}/>)
-            : (<img src="https://pbs.twimg.com/profile_images/1247183406/recetas_de_cocina_400x400.jpg" className={style.imagen1}></img>)}
+                <img src={details.image} alt= "imagen de API" className={style.imagen1}/>)
+                : (<img src="https://pbs.twimg.com/profile_images/1247183406/recetas_de_cocina_400x400.jpg" alt="imagen bdd" className={style.imagen1}></img>)}
             </div>
            
             <div className={style.dishtypes}>
-                <h3 className={style.h3}>Dish Types:</h3>
-                <p className={style.valores}>{details.dishTypes}</p>
+              <h3 className={style.h3}>Dish Types:</h3>
+              <p className={style.valores}>{details.dishTypes}</p>
             </div>
 
             <div className={style.tipos}>
-            <h3 className={style.h3}>Diet Types:</h3>
-                <p className={style.valores}>{details.diets?.map((r)=>{return(<ul className={style.dietasP}>{r}</ul>)})}</p>
+              <h3 className={style.h3}>Diet Types:</h3>
+              <p className={style.valores}>{details.diets?.map((r)=>{return(<ul className={style.dietasP}>{r}</ul>)})}</p>
             </div>
 
             <div className={style.healthscore}>
-            <h3 className={style.h3}>Health Score: </h3>
-                <p className={style.valores}>{details.healthScore}</p>
+              <h3 className={style.h3}>Health Score: </h3>
+              <p className={style.valores}>{details.healthScore}</p>
             </div>
 
             <div className={style.summary}>
-                <h3 className={style.h31} >Summary:</h3>
-            <p className={style.resumen} > {details.summary?.replace(/<[^>]*>/g, "")} </p>
+              <h3 className={style.h31} >Summary:</h3>
+              <p className={style.resumen} > {details.summary?.replace(/<[^>]*>/g, "")} </p>
             </div>
 
-            <h3 className={style.h31}>Steps: </h3>
+              <h3 className={style.h31}>Steps: </h3>
             <div className={style.steps}>
             
               {details.createdInDb ? (
                 <p className={style.stepsdiv2}>{details.steps}</p>
-              ) : (
+                ) : (
                 <div className={style.stepsdetailsdiv}>
                   {details.steps?.map((step, i) => {
                     return (
@@ -75,12 +70,12 @@ export const Detail= (props)=>{
                         </p>
                       </div>
                     );
-                  })}
+                    })}
                 </div>
               )}
             </div>
-                  </div>
-                 : <LoadingDetail></LoadingDetail> } 
+          </div>
+          : <LoadingDetail></LoadingDetail> } 
 
     </div>
     

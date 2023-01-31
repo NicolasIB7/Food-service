@@ -27,18 +27,18 @@ export const SearchBar=()=>{
         setSearchInput("");
     }
 
-    return(
-        <div>
-        <div >
+        return(
+            <div>
+                <div >
             
-            <form className={style.search}>
-                <input type="search" onChange={changeHandler} value={searchInput} className={style.input} placeholder="Search recipe"></input>
-                <button type="submit" onClick={submitHandler} className={style.botonSearch}>Search</button>
-            </form>
+                    <form className={style.search}>
+                        <input type="search" onChange={changeHandler} value={searchInput} className={style.input} placeholder="Search recipe"></input>
+                        <button type="submit" onClick={submitHandler} className={style.botonSearch}>Search</button>
+                    </form>
 
-        </div>
-        {isLoading && <LoadingSearch></LoadingSearch>}
-        </div>
+                </div>
+                {isLoading && <LoadingSearch></LoadingSearch>}
+            </div>
     )
 
 }
