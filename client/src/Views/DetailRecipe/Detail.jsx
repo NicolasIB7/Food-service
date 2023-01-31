@@ -42,7 +42,7 @@ export const Detail= (props)=>{
 
             <div className={style.tipos}>
               <h3 className={style.h3}>Diet Types:</h3>
-              <p className={style.valores}>{details.diets?.map((r)=>{return(<ul className={style.dietasP}>{r}</ul>)})}</p>
+              <p className={style.valores}>{details.diets?.map((r)=>{return(<ul className={style.dietasP}>{r}</ul>)}) || details.Diets.map(e=><ul className={style.dietasP}>{e.name}</ul>)}</p>
             </div>
 
             <div className={style.healthscore}>

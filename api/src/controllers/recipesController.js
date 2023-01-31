@@ -46,7 +46,7 @@ const modifyData=(el)=>{
           
       });
       
-    return [...API,...databaseRecipes]
+    return [...databaseRecipes,...API]
   }
 
   
