@@ -16,10 +16,10 @@ const Paginate=({recipesPerPage,recipes,paginado,previousPage,nextPage,currentPa
 
                 {pageNumber && pageNumber.map((number)=>(
      
-                    <button onClick={()=>paginado(number)} className={style.button}>{number}</button>   
+                    <button key={number} onClick={()=>paginado(number)} className={currentPage===number ? style.b : style.button}>{number}</button>   
                 ))}
                 {!pageNumber.length<=0 &&
-                <button onClick={()=>nextPage()} className={style.button}>🢂</button>}
+                <button  onClick={()=>nextPage(pageNumber.length)} className={style.button}>🢂</button>}
 
             </ul>
 

@@ -109,7 +109,7 @@ const Form= ()=>{
                     <h3 className={style.nombre}>Enjoy creating your own recipe!</h3>
                 <div>
                     <label className={style.label}>Recipe name:</label>
-                    <input type="text" value={form.name} onChange={changeHandler} name="name" className={style.input} ></input>
+                    <input type="text" value={form.name} onChange={changeHandler} name="name" className={style.input} required></input>
                     {errors.name && <span>{errors.name}</span>}
                 </div>
 

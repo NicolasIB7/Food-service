@@ -60,3 +60,7 @@ border-radius: 7%;
 background-color: rgb(247, 213, 173);
 font-weight: bold;
 }
+
+.paginate:valid{
+    background-color: red;
+}

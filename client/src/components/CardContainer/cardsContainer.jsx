@@ -8,9 +8,9 @@ import Card from "../Card/Card";
 import style from "./CardsContainer.module.css";
 
 
-const CardsContainer =()=>{
+const CardsContainer =(props)=>{
 
-   
+
     const dispatch=useDispatch();
     const recipes=useSelector(state=>state.recipes) //ESTO ME TRAE EL ARRAY DE RECETAS DE MI STORE, está atento ante algun cambio que suceaa en mi store
     const [isLoading,setisLoading]=useState(true);
@@ -26,31 +26,32 @@ const CardsContainer =()=>{
         setCurrentPage(pageNumber)
     }
     const previousPage=()=>{
-        const a=currentPage-1;
-        setCurrentPage(a)
+        (currentPage-1) && paginado(currentPage-1)
     }
-    const nextPage=()=>{
-        const a=currentPage+1;
-        setCurrentPage(a)
+    const nextPage=(i)=>{
+        (currentPage!==i) && paginado(currentPage+1)
     }
 //---------------------------------------------FILTROS Y ORDENAMIENTOS-------------------------------------------//
     const handlerClick=(e)=>{
         e.preventDefault();
          dispatch(orderRecipes(e.target.value));
+         setCurrentPage(1)
     }
 
 
     const handlerFilter=(e)=>{
         e.preventDefault();
         dispatch(filterRecipes(e.target.value));
+        setCurrentPage(1)
     }
 
     const handleClick=(e)=>{
         e.preventDefault();
-        dispatch(getRecipes())
+        dispatch(getRecipes());
+        setCurrentPage(1)
     }
 
-  
+ 
     
 
     if(currentRecipes.length>0 && isLoading){
@@ -122,6 +123,7 @@ const CardsContainer =()=>{
         previousPage={previousPage}
         nextPage={nextPage}
         currentPage={currentPage}
+
         />
 
     </div>
