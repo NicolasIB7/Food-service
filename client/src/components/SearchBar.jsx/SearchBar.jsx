@@ -21,11 +21,12 @@ export const SearchBar=()=>{
     const submitHandler=(e)=>{
         setisLoading(true)
         e.preventDefault();
-        dispatch(getRecipeByName(searchInput)).then(()=>{
-            setisLoading(false)
-          })
-        setSearchInput("");
-    }
+
+            dispatch(getRecipeByName(searchInput)).then(()=>{
+                setisLoading(false)
+              })
+            setSearchInput("");
+            }
 
         return(
             <div>

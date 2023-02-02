@@ -9,11 +9,10 @@ const {Op}=require("sequelize");
 
  const getRecipesHandler=async (req,res)=>{
      const {name}=req.query;
-
      const result = name ? await searchRecipeByName(name) : await getAllRecipes();
 
          return res.status(200).json(result)
-        }  
+        } 
 
 
  const getRecipeHandler=async (req,res)=>{

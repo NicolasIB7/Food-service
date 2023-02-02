@@ -27,9 +27,9 @@ const modifyData=(el)=>{
   const getAllRecipes=async()=>{
 
     const allApiRecipes=(
-        await axios.get("https://apimocha.com/n.s.recipes/allrecipes")
-      )
-     // `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`
+        await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`))
+      // )"https://apimocha.com/n.s.recipes/allrecipes"
+     // 
      
     const API=allApiRecipes.data.results.map((el)=>modifyData(el))
 
@@ -62,10 +62,7 @@ const modifyData=(el)=>{
            const API=(await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`))
            //"https://apimocha.com/n.s.recipes/allrecipes"
 
-           //USANDO URL DE TODAS LAS RECETAS:
-          // const filterAPI=API.data.results.map((el)=>modifyData(el))
 
-          // const filtradoId=filterAPI.find(recipe=>recipe.id.toString()===id);
           //USANDO URL DE ID
           const filtradoId=modifyData(API.data)
           
@@ -101,7 +98,7 @@ const modifyData=(el)=>{
             }}});
 
      const apiRecipeRaw=(
-         await axios.get("https://apimocha.com/n.s.recipes/allrecipes")
+         await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`)
      );
      //`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`
 
