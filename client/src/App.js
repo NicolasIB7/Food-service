@@ -4,7 +4,7 @@ import NavBar from './components/NavBar/NavBar';
 import {Detail,Form,Home,Landing} from "./Views"
 import { About } from './Views/About/About';
 import axios from "axios";
-axios.defaults.baseURL= 'http://localhost:3001/';
+axios.defaults.baseURL= 'https://pi-foods-production-9f47.up.railway.app/';
 
 function App() {
 
