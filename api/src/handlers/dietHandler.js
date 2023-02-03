@@ -1,7 +1,7 @@
 //const {dietas}=require("../controllers/dietController")
 const { Diet,Recipe } = require("../db.js");
 const axios =require("axios")
-const {API_KEY} =process.env;
+// const {API_KEY} =process.env;
 
 const dietsHandler=async (req,res)=>{
     try {

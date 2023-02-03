@@ -4,7 +4,7 @@
  const { Recipe, Diet } = require("../db.js");
  const {Op}=require("sequelize")
  
- const {API_KEY} =process.env;
+//  const {API_KEY} =process.env;
 
 
 const modifyData=(el)=>{

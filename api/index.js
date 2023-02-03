@@ -20,6 +20,7 @@
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
 const { dietsHandler } = require('./src/handlers/dietHandler.js');
+require('dotenv').config();
 const {PORT}=process.env; //le indico que me traiga todo lo de ese archivo
 
 
