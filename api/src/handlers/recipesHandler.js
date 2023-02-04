@@ -42,7 +42,7 @@ try {
     //     [Op.in]:diets? diets:[]}
        await newRecipe.addDiet(findAllDiets);
 
-    return res.status(202).json({msg:"Creada correctamente"})
+    return res.status(200).json({msg:"Creada correctamente"})
 } catch (error) {
     res.status(400).json({error:error.message})
 }}
