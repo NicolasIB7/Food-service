@@ -86,7 +86,6 @@ const Form= ()=>{
          dispatch(postRecipe(form))
          .then(res=>alert("Your recipe has been created successfully!!"),console.log(res))
          .catch(err=>alert("Sorry, an error has occurred :( " ),console.log(err))
-         window.location.reload(true)
     }
 
     const handleDelete=(e)=>{
