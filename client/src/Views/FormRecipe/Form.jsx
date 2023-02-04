@@ -84,8 +84,8 @@ const Form= ()=>{
     const submitHandler=(event)=>{
          event.preventDefault();
          dispatch(postRecipe(form))
-         .then(res=>alert("Your recipe has been created successfully!!"))
-         .catch(err=>alert("Sorry, an error has occurred :( "))
+         .then(res=>alert("Your recipe has been created successfully!!"),console.log(res))
+         .catch(err=>alert("Sorry, an error has occurred :( " ),console.log(err))
          window.location.reload(true)
     }
 
