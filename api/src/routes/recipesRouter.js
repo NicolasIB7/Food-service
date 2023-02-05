@@ -7,7 +7,7 @@ const {validaciones}=require("../middleware/middleware");
  
 
 recipesRouter.get("/:id", getRecipeHandler);
-recipesRouter.post("/",validaciones, createRecipesHandler);
+recipesRouter.post("/",createRecipesHandler);
 recipesRouter.get("/", getRecipesHandler);
 recipesRouter.delete("/:id", deleted);
 recipesRouter.put("/:id/:attribute",updated)

@@ -34,10 +34,14 @@ export const getRecipeByName=(name)=>{
 
 export const postRecipe=(id)=>{
     return async function(dispatch){
-        const apiData=await axios.post('/recipes',id)
-        const post=apiData.data;
+        await fetch.post('https://pi-foods-production-e8a6.up.railway.app/recipes',id)
+        .then((response)=>response.JSON()
+        .then(data=>{
+            dispatch({type:POST_RECIPE,payload:data})
+        }))
+        
 
-        dispatch({type:POST_RECIPE,payload:post}) //despacha la action, no importo el hook porque acá no interesa, estamos en redux, el archivo que va a usar esta funcion sí tednrá que importar useDispatch
+         //despacha la action, no importo el hook porque acá no interesa, estamos en redux, el archivo que va a usar esta funcion sí tednrá que importar useDispatch
     }
     
 }
