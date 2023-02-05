@@ -35,7 +35,7 @@ export const getRecipeByName=(name)=>{
 export const postRecipe=(id)=>{
     return async function(dispatch){
         await fetch('https://pi-foods-production-e8a6.up.railway.app/recipes',id)
-        .then((response)=>response.JSON()
+        .then((response)=>response.json()
         .then(data=>{
             dispatch({type:POST_RECIPE,payload:data})
         }))
