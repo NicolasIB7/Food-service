@@ -32,13 +32,13 @@ export const SearchBar=({currentRoute})=>{
         return(
             <div>
                 <div >
-                {currentRoute!=="/create" && 
+                 
                     <form className={style.search}>
                         <input type="search" onChange={changeHandler} value={searchInput} className={style.input} placeholder="Search recipe"></input>
                         
                         <button type="submit" onClick={submitHandler} className={style.botonSearch}>Search</button>
 
-                    </form>}
+                    </form>
 
                 </div>
                 {isLoading && <LoadingSearch></LoadingSearch>}

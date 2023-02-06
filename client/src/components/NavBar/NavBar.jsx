@@ -13,8 +13,8 @@ const NavBar= ({onSearch})=>{
                 <img src="https://cdn-icons-png.flaticon.com/512/6505/6505958.png" alt="Imagen" className={style.logo}/>
              </Link>
              </div>
-
-             <SearchBar onSearch={onSearch} currentRoute={currentRoute} />
+             {currentRoute!=="/create" &&
+             <SearchBar onSearch={onSearch}/>}
             
            
             <Link to="/create" className={style.links} >Create your recipe</Link>
