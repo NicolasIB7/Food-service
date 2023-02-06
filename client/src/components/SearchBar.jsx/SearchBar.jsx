@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useLocation } from "react-router-dom";
 import { getRecipeByName } from "../../redux/actions";
 import LoadingSearch from "./loadingSearch";
 import style from "./SearchBar.module.css";
@@ -9,7 +8,7 @@ import style from "./SearchBar.module.css";
 
 
 export const SearchBar=({currentRoute})=>{
-    location=useLocation()
+
 
     const dispatch=useDispatch();
     
