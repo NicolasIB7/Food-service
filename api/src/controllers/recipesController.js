@@ -4,7 +4,7 @@
  const { Recipe, Diet } = require("../db.js");
  const {Op}=require("sequelize")
  
-//  const {API_KEY} =process.env;
+  const {API_KEY} =process.env;
 
 
 const modifyData=(el)=>{
@@ -27,9 +27,9 @@ const modifyData=(el)=>{
   const getAllRecipes=async()=>{
 
     const allApiRecipes=(
-        await axios.get("https://apimocha.com/n.s.recipes/allrecipes"))
+        await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`))
       // )`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`
-     // 
+     // "https://apimocha.com/n.s.recipes/allrecipes"
      
     const API=allApiRecipes.data.results.map((el)=>modifyData(el))
 
@@ -59,7 +59,7 @@ const modifyData=(el)=>{
   const getRecipeById=async (id,fuente)=>{
 
     if(fuente==="api"){
-           const API=(await axios.get("https://apimocha.com/n.s.recipes/allrecipes"))
+           const API=(await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`))
            // `https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`
            const filterAPI=API.data.results.map((el)=>modifyData(el))
 
@@ -100,7 +100,7 @@ const modifyData=(el)=>{
             }}});
 
      const apiRecipeRaw=(
-         await axios.get("https://apimocha.com/n.s.recipes/allrecipes")
+         await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`)
      );
      //`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`
 

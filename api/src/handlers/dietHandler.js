@@ -1,11 +1,11 @@
 //const {dietas}=require("../controllers/dietController")
 const { Diet,Recipe } = require("../db.js");
 const axios =require("axios")
-// const {API_KEY} =process.env;
+ const {API_KEY} =process.env;
 
 const dietsHandler=async (req,res)=>{
     try {
-        const APIdietas=await axios.get("https://apimocha.com/n.s.recipes/allrecipes")
+        const APIdietas=await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`)
         const types=await APIdietas.data.results.map((t)=>t.diets);
         const diets=types.flat(1);
         const typesDiets=[...new Set(diets),"vegetarian"];
