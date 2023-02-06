@@ -1,8 +1,8 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { SearchBar } from "../SearchBar.jsx/SearchBar";
 import style from "./NavBar.module.css";
 
-const location=useLocation();
+
 const NavBar= ({onSearch})=>{
     return(
         <div className={style.maincontainer}>
@@ -12,7 +12,7 @@ const NavBar= ({onSearch})=>{
              </Link>
              </div>
 
-             {location.pathname!=="/create"  && <SearchBar onSearch={onSearch} />}
+             <SearchBar onSearch={onSearch} />
             
            
             <Link to="/create" className={style.links} >Create your recipe</Link>

@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useLocation } from "react-router-dom";
 import { getRecipeByName } from "../../redux/actions";
 import LoadingSearch from "./loadingSearch";
 import style from "./SearchBar.module.css";
@@ -8,6 +9,7 @@ import style from "./SearchBar.module.css";
 
 
 export const SearchBar=()=>{
+    location=useLocation()
 
     const dispatch=useDispatch();
     
@@ -34,7 +36,11 @@ export const SearchBar=()=>{
             
                     <form className={style.search}>
                         <input type="search" onChange={changeHandler} value={searchInput} className={style.input} placeholder="Search recipe"></input>
-                        <button type="submit" onClick={submitHandler} className={style.botonSearch}>Search</button>
+                        {/* <button type="submit" onClick={submitHandler} className={style.botonSearch}>Search</button> */}
+                        {location.pathname==="/create" ? 
+    <button disabled="disabled" >Search</button>
+    :
+    <button type="submit" onClick={submitHandler} className={style.botonSearch}>Search</button>}
                     </form>
 
                 </div>
@@ -43,3 +49,5 @@ export const SearchBar=()=>{
     )
 
 }
+
+
