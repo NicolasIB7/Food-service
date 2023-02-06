@@ -1,9 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { SearchBar } from "../SearchBar.jsx/SearchBar";
 import style from "./NavBar.module.css";
 
 
 const NavBar= ({onSearch})=>{
+    const location=useLocation();
+    const [currentRoute,setCurrentRoute]=useState(location.pathname)
     return(
         <div className={style.maincontainer}>
             <div className={style.imagen}>
@@ -12,7 +14,7 @@ const NavBar= ({onSearch})=>{
              </Link>
              </div>
 
-             <SearchBar onSearch={onSearch} />
+             <SearchBar onSearch={onSearch} currentRoute={currentRoute} />
             
            
             <Link to="/create" className={style.links} >Create your recipe</Link>

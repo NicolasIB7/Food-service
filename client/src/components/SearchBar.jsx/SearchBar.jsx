@@ -8,7 +8,7 @@ import style from "./SearchBar.module.css";
 
 
 
-export const SearchBar=()=>{
+export const SearchBar=({currentRoute})=>{
     location=useLocation()
 
     const dispatch=useDispatch();
@@ -36,11 +36,9 @@ export const SearchBar=()=>{
             
                     <form className={style.search}>
                         <input type="search" onChange={changeHandler} value={searchInput} className={style.input} placeholder="Search recipe"></input>
-                        {/* <button type="submit" onClick={submitHandler} className={style.botonSearch}>Search</button> */}
-                        {location.pathname==="/create" ? 
-    <button disabled="disabled" >Search</button>
-    :
-    <button type="submit" onClick={submitHandler} className={style.botonSearch}>Search</button>}
+                        {currentRoute!=="/create" && 
+                        <button type="submit" onClick={submitHandler} className={style.botonSearch}>Search</button>}
+
                     </form>
 
                 </div>
