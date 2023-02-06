@@ -35,8 +35,8 @@ export const getRecipeByName=(name)=>{
 export const postRecipe=(id)=>{
     return async function(dispatch){
         const apidata=await axios.post('/recipes',id)
-        const postRecipe=apidata.data;
-            dispatch({type:POST_RECIPE,payload:postRecipe})
+        const postRecipes=apidata.data;
+            dispatch({type:POST_RECIPE,payload:postRecipes})
     
          //despacha la action, no importo el hook porque acá no interesa, estamos en redux, el archivo que va a usar esta funcion sí tednrá que importar useDispatch
     }  
