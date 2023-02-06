@@ -10,7 +10,7 @@ const Card =(props)=>{
     const deleteHandler=(event)=>{
         event.preventDefault();
         dispatch(deleteRecipe(props.id))
-        .then(alert("The recipe has been deleted succesfully, please refresh to see the changes"))
+        .then(alert("The recipe has been deleted succesfully"))
         .then(dispatch(getRecipes()))
         .catch(err=>console.log(err))     
    }
