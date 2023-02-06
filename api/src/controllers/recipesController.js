@@ -61,12 +61,12 @@ const modifyData=(el)=>{
     if(fuente==="api"){
            const API=(await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`))
            // `https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`
-           const filterAPI=API.data.results.map((el)=>modifyData(el))
+           //const filterAPI=API.data.results.map((el)=>modifyData(el))
 
-            const filtradoId=filterAPI.find(recipe=>recipe.id.toString()===id);
+            //const filtradoId=filterAPI.find(recipe=>recipe.id.toString()===id);
 
           //USANDO URL DE ID
-          //const filtradoId=modifyData(API.data)
+          const filtradoId=modifyData(API.data)
           
           return filtradoId;
     }
