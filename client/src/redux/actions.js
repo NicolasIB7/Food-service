@@ -10,9 +10,18 @@ export const ORDER="ORDER";
 export const FILTER="FILTER";
 export const DELETE="DELETE";
 
+const config = {
+    headers: {
+        'Cache-Control': 'no-cache',
+        'Pragma': 'no-cache'
+    }
+};
+
+
+
 export const getRecipes=()=>{
     return async function(dispatch){
-        const apiData=await axios.get('/recipes')
+        const apiData=await axios.get('/recipes',config)
         const recipes=apiData.data;
 
         dispatch({type:GET_RECIPES,payload:recipes}) //despacha la action, no importo el hook porque acá no interesa, estamos en redux, el archivo que va a usar esta funcion sí tednrá que importar useDispatch
@@ -34,7 +43,7 @@ export const getRecipeByName=(name)=>{
 
 export const postRecipe=(id)=>{
     return async function(dispatch){
-        const apidata=await axios.post('/recipes',id)
+        const apidata=await axios.post('/recipes',id,config)
         const postRecipes=apidata.data;
             dispatch({type:POST_RECIPE,payload:postRecipes})
     
