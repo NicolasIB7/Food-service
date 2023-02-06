@@ -84,7 +84,14 @@ const Form= ()=>{
     const submitHandler=(event)=>{
          event.preventDefault();
          dispatch(postRecipe(form))
-         .then(res=>console.log(res))
+         .then(alert("The recipe has been created successfully"))
+         .then(setForm({
+            name:"",
+            summary:"",
+            healthScore:"",
+            steps:"",
+            diets:[]
+        }))
          .catch(err=>console.log(err))
     }
 
