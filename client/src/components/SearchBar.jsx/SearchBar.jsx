@@ -7,7 +7,7 @@ import style from "./SearchBar.module.css";
 
 
 
-export const SearchBar=({currentRoute})=>{
+export const SearchBar=()=>{
 
 
     const dispatch=useDispatch();

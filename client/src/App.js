@@ -4,6 +4,7 @@ import NavBar from './components/NavBar/NavBar';
 import {Detail,Form,Home,Landing} from "./Views"
 import { About } from './Views/About/About';
 import axios from "axios";
+import { SearchBar } from './components/SearchBar.jsx/SearchBar';
 axios.defaults.baseURL= 'https://pi-foods-production-e8a6.up.railway.app/';
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
   const location=useLocation();
   return (
     <div className="App">
-
+      {location.pathname!=="/create" && <SearchBar/>}
       {location.pathname!=="/" && <NavBar/>}
 
       <Route path="/create">
