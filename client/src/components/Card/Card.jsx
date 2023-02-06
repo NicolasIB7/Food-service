@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { deleteRecipe } from "../../redux/actions";
+import { deleteRecipe,getRecipes } from "../../redux/actions";
 import style from "./Card.module.css";
 
 const Card =(props)=>{
@@ -11,8 +11,8 @@ const Card =(props)=>{
         event.preventDefault();
         dispatch(deleteRecipe(props.id))
         .then(alert("The recipe has been deleted succesfully, please refresh to see the changes"))
-        .catch(err=>console.log(err))
-        
+        .then(dispatch(getRecipes()))
+        .catch(err=>console.log(err))     
    }
 
 

@@ -149,7 +149,7 @@ const Form= ()=>{
                     </select>
                 </div>
             
-                    {(!form.name || !form.summary || !form.healthScore || !form.steps || !form.diets.length) ? 
+                    {(!form.name || !form.summary || !form.healthScore || !form.steps || !form.diets.length || !errors.name || !errors.summary || !errors.healthScore || !errors.steps) ? 
                     <button disabled="disabled" className={style.disabled}>CREATE</button>
                     :
                     <button type="submit" className={style.submit}>CREATE</button>}
