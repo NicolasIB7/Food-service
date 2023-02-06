@@ -34,16 +34,12 @@ export const getRecipeByName=(name)=>{
 
 export const postRecipe=(id)=>{
     return async function(dispatch){
-        await fetch('https://pi-foods-production-e8a6.up.railway.app/recipes',id)
-        .then((response)=>response.json()
-        .then(data=>{
-            dispatch({type:POST_RECIPE,payload:data})
-        }))
-        
-
-         //despacha la action, no importo el hook porque acá no interesa, estamos en redux, el archivo que va a usar esta funcion sí tednrá que importar useDispatch
-    }
+        const apidata=await axios.post('/recipes',id)
+        const postRecipe=apidata.data;
+            dispatch({type:POST_RECIPE,payload:postRecipe})
     
+         //despacha la action, no importo el hook porque acá no interesa, estamos en redux, el archivo que va a usar esta funcion sí tednrá que importar useDispatch
+    }  
 }
 
 export const getRecipeById=(id)=>{
