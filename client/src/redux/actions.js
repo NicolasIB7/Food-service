@@ -21,7 +21,7 @@ const config = {
 
 export const getRecipes=()=>{
     return async function(dispatch){
-        const apiData=await axios.get('/recipes',config)
+        const apiData=await axios.get('/recipes')
         const recipes=apiData.data;
 
         dispatch({type:GET_RECIPES,payload:recipes}) //despacha la action, no importo el hook porque acá no interesa, estamos en redux, el archivo que va a usar esta funcion sí tednrá que importar useDispatch
