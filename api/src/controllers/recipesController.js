@@ -27,7 +27,7 @@ const modifyData=(el)=>{
   const getAllRecipes=async()=>{
 
     const allApiRecipes=(
-        await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`))
+        await axios.get("https://apimocha.com/n.s.recipes/allrecipes"))
       // )`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`
      // "https://apimocha.com/n.s.recipes/allrecipes"
      
@@ -59,14 +59,14 @@ const modifyData=(el)=>{
   const getRecipeById=async (id,fuente)=>{
 
     if(fuente==="api"){
-           const API=(await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`))
+           const API=(await axios.get("https://apimocha.com/n.s.recipes/allrecipes"))
            // `https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`
-           //const filterAPI=API.data.results.map((el)=>modifyData(el))
+           const filterAPI=API.data.results.map((el)=>modifyData(el))
 
-            //const filtradoId=filterAPI.find(recipe=>recipe.id.toString()===id);
+            const filtradoId=filterAPI.find(recipe=>recipe.id.toString()===id);
 
           //USANDO URL DE ID
-          const filtradoId=modifyData(API.data)
+          //const filtradoId=modifyData(API.data)
           
           return filtradoId;
     }
@@ -100,7 +100,7 @@ const modifyData=(el)=>{
             }}});
 
      const apiRecipeRaw=(
-         await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`)
+         await axios.get("https://apimocha.com/n.s.recipes/allrecipes")
      );
      //`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`
 
