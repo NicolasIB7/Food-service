@@ -10,12 +10,7 @@ export const ORDER="ORDER";
 export const FILTER="FILTER";
 export const DELETE="DELETE";
 
-const config = {
-    headers: {
-        'Cache-Control': 'no-cache',
-        'Pragma': 'no-cache'
-    }
-};
+
 
 
 
@@ -43,7 +38,7 @@ export const getRecipeByName=(name)=>{
 
 export const postRecipe=(id)=>{
     return async function(dispatch){
-        const apidata=await axios.post('/recipes',id,config)
+        const apidata=await axios.post('/recipes',id)
         const postRecipes=apidata.data;
             dispatch({type:POST_RECIPE,payload:postRecipes})
     
