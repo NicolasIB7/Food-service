@@ -8,8 +8,6 @@ import style from "./SearchBar.module.css";
 
 
 export const SearchBar=()=>{
-
-
     const dispatch=useDispatch();
     
     const[searchInput, setSearchInput]=useState("");

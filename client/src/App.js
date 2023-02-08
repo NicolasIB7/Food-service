@@ -12,7 +12,7 @@ function App() {
   const location=useLocation();
   return (
     <div className="App">
-      {location.pathname!=="/create" && <SearchBar/>}
+
       {location.pathname!=="/" && <NavBar/>}
 
       <Route path="/create">
