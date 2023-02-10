@@ -1,6 +1,6 @@
 import { useState } from "react";
 import style from "./Form.module.css"
-import { postRecipe,getDiets } from "../../redux/actions";
+import { postRecipe,getDiets, getRecipes } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
@@ -92,6 +92,7 @@ const Form= ()=>{
             steps:"",
             diets:[]
         }))
+        .then(dispatch(getRecipes()))
          .catch(err=>console.log(err))
     }
 
