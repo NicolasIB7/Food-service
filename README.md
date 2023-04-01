@@ -33,6 +33,8 @@ Versiones:
 
 El boilerplate cuenta con dos carpetas: `api` y `client`. En estas carpetas estará el código del back-end y el front-end respectivamente.
 
+
+
 En `api` crear un archivo llamado: `.env` que tenga la siguiente forma:
 
 ```env
@@ -59,3 +61,8 @@ La idea general es crear una aplicación en la cual se puedan ver distintas rece
 - [ ] Redux
 - [ ] Express
 - [ ] Sequelize - Postgres
+
+
+
+deploy:
+https://pi-foods-steel.vercel.app/
