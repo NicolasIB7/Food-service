@@ -66,3 +66,15 @@ border: 0.5px solid black;
     scale: 1.1;
     cursor: pointer;
 }
+
+.fav{
+    scale: 2;
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    cursor: pointer;
+    margin-right: 90%;
+}
+
+.fav:hover{
+    scale: 2.2;
+}
