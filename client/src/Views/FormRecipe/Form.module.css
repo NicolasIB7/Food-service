@@ -135,3 +135,20 @@ border: 0.5px solid black;
     color: #f6f6f6;
     font: italic small-caps bold 17px/2 cursive;
 }
+
+
+@media only screen and (max-width:800px) {
+    .div{
+        scale: 0.9;
+    }
+}
+
+@media only screen and (max-width:550px) {
+
+    .div{
+        scale: 0.7;
+    }
+       
+
+}
+

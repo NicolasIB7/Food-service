@@ -79,6 +79,7 @@ const CardsContainer = (props) => {
           className={style.cargatodo}>
           All the recipes
         </button>
+        {/* <div className={style.filtro}> */}
 
         <select
           name='ORDER'
@@ -107,6 +108,7 @@ const CardsContainer = (props) => {
           <option value='fodmap fiendly'>Fodmap Friendly</option>
           <option value='vegetarian'>Vegetarian</option>
         </select>
+        {/* </div> */}
       </div>
 
       <div className={style.container}>
@@ -139,7 +141,7 @@ const CardsContainer = (props) => {
           <Notfound></Notfound>
         )}
       </div>
-
+<div className={style.paginado}>
       <Paginate
         recipesPerPage={recipesPerPage}
         recipes={recipes.length}
@@ -147,7 +149,9 @@ const CardsContainer = (props) => {
         previousPage={previousPage}
         nextPage={nextPage}
         currentPage={currentPage}
+        
       />
+      </div>
     </div>
   );
 };

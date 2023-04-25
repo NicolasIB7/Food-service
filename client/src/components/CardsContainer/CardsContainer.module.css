@@ -64,3 +64,56 @@ font-weight: bold;
 .paginate:valid{
     background-color: red;
 }
+
+
+
+@media only screen and (max-width:1100px) {
+    .container{
+     grid-template-columns: 1fr 1fr;
+     gap: 30px;
+     margin: 30px;
+ 
+    }
+ }
+@media only screen and (max-width:800px) {
+   .container{
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin: 30px;
+    width: fit-content;
+    margin: auto;
+
+   }
+   .paginado{
+    scale: 0.9;
+   }
+
+   .cargatodo{
+    scale: 0.8;
+   }
+   .divFiltrados{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    margin: auto;
+    margin-bottom: 20px;
+   }
+}
+
+
+@media only screen and (max-width:550px) {
+
+    .container{
+        grid-template-columns: 1fr;
+        gap: 30px;
+        margin: 30px;
+        width: fit-content;
+        margin: auto;
+    
+       }
+       .paginado{
+        scale: 0.8;
+       }
+       
+
+}

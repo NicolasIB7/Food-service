@@ -23,3 +23,18 @@
     background-color: #ad5517b4;
     cursor: pointer;
 }
+
+
+@media only screen and (max-width:851px) {
+   .search{
+    scale:0.9;
+    margin-right: 200px;
+   }
+}
+
+@media only screen and (max-width:500px) {
+    .search{
+        scale:0.8;
+        margin-right: 200px;
+       }
+    }
