@@ -5,8 +5,8 @@ import { Detail, Form, Home, Landing } from "./Views";
 import { About } from "./Views/About/About";
 import axios from "axios";
 import Favorites from "./Views/Favorites/Favorites";
-axios.defaults.baseURL = "food-service-production-dc7b.up.railway.app/";
-// 'http://localhost:3001/  https://pi-foods-production-e8a6.up.railway.app/
+axios.defaults.baseURL = "https://food-service-production-dc7b.up.railway.app/";
+// 'http://localhost:3001/   food-service-production-dc7b.up.railway.app/
 
 
 function App() {

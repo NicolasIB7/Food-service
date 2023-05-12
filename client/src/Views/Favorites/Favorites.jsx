@@ -20,7 +20,7 @@ function Favorites(props) {
   return (
     <div className={style.container}>
       {cardsFavoritas.length > 0 ? (
-        cardsFavoritas?.map((favorito) => (
+        cardsFavoritas.map((favorito) => (
           <Card
             key={favorito.id}
             id={favorito.id}
