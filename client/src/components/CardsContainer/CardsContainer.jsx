@@ -113,7 +113,7 @@ const CardsContainer = (props) => {
 
       <div className={style.container}>
         {currentRecipes.length > 0 && !isLoading ? (
-          currentRecipes.map((recipe) => {
+          currentRecipes?.map((recipe) => {
             return (
               <Card
                 onAddFavorites={handleFvorite}
