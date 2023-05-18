@@ -10,6 +10,8 @@ El proyecto consiste en una web para la búsqueda de diferentes recetas donde el
 
 Todo esto se logró mediante la realizacion de un BACKEND adquiriendo informacion mediante el consumo de una API sumado a las recetas que serán creadas por los diferentes clientes, donde estas últimas serán guarfadas en una base de datos relacional.
 
+## Video del proyecto en funcionamiento:
+
 
 [![Video](https://img.youtube.com/vi/b7-VvbJBKM8/0.jpg)](https://www.youtube.com/watch?v=b7-VvbJBKM8)
 
