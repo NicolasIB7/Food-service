@@ -65,7 +65,7 @@ La idea general es crear una aplicación en la cual se puedan ver distintas rece
 - Filtrarlos / Ordenarlos
 - Crear nuevas recetas propias
 
-#### Tecnologías usadas
+### Tecnologías usadas
 
 
 
@@ -85,5 +85,5 @@ La idea general es crear una aplicación en la cual se puedan ver distintas rece
 
 
 
-deploy:
+## Deploy:
 https://pi-foods-steel.vercel.app/
